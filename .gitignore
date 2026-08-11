@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+.env
+.env.*
+!.env.example
+tests/*
+
+# Sample LOBSTER data is large and separately distributed; fetch it locally.
+data/*
+
+# Experiment output is regenerated per run. The primary demonstration run is
+# tracked because its telemetry and delivery report are the reported result.
+runs/*
+!runs/20260810T212427Z-18ae798e/

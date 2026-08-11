@@ -1,0 +1,3764 @@
+{
+  "evaluation_definitions": {
+    "best_action_reward": "maximum deterministic reward across legal offsets 0, 1, and 2",
+    "chosen_reward": "reward of the action selected during the normal generation call",
+    "constant_outcome": "all three legal offsets have equal scalar reward",
+    "decision_regret": "best_action_reward minus chosen_reward",
+    "outcome_differentiated": "at least two legal offsets have different scalar rewards"
+  },
+  "evolution_mode": "direct_successor",
+  "final_successor": {
+    "harness_id": "d613235a104e09681b35e022",
+    "measured": false
+  },
+  "generation_telemetry": [
+    {
+      "active_harness_id": "e41aadfa6cfc3df994526f43",
+      "active_harness_version": 0,
+      "candidate_harness_id": "8cd28a9db1a69c6400b33e2a",
+      "decision_agent_error": null,
+      "decision_agent_latency_ms": 67789,
+      "decision_agent_token_usage": {
+        "input": 479,
+        "output": 4182
+      },
+      "decision_reason": "operational_validation_passed",
+      "diagnosis": {
+        "affected_metric": "fill_ratio",
+        "confidence": 0.6,
+        "diagnosis_id": "diagnosis-df10b9939d9cea33",
+        "evidence_refs": [
+          "evidence-g0:aggregate:fill_ratio",
+          "evidence-g0:aggregate:unfilled_penalty"
+        ],
+        "suspected_cause": "Only one book level is provided, so the agent cannot see liquidity beyond the top of book, leading to an order that never fills.",
+        "suspected_harness_component": "observation.book_levels"
+      },
+      "episode_id": "0a2aec3fdf5938dc9178ccc7",
+      "episode_timestamp": 34200.888800256,
+      "evidence": {
+        "aggregate_metrics": {
+          "constraint_fallback_rate": 0.0,
+          "execution_value": 0.0,
+          "fees": 0.0,
+          "fill_ratio": 0.0,
+          "reward": -10000.0,
+          "signed_markout": 0.0,
+          "spread_capture": 0.0,
+          "unfilled_penalty": 10000.0
+        },
+        "evidence_id": "evidence-g0",
+        "experience_ids": [
+          "e9f6801f99ac9e3390bc4d0d"
+        ],
+        "metric_slices": {
+          "AAPL": {
+            "constraint_fallback_rate": 0.0,
+            "execution_value": 0.0,
+            "fees": 0.0,
+            "fill_ratio": 0.0,
+            "reward": -10000.0,
+            "signed_markout": 0.0,
+            "spread_capture": 0.0,
+            "unfilled_penalty": 10000.0
+          }
+        },
+        "sample_count": 1
+      },
+      "factory_backend": "llm",
+      "factory_decision": "PROMOTED",
+      "factory_error": null,
+      "factory_latency_ms": 13946,
+      "factory_model_config_hash": "59a1f51f0d49131efdfd320485c1d95a5494ba0b06f7634c82358fc022e7f934",
+      "factory_prompt_version": "factory-v4",
+      "factory_retry_count": 0,
+      "factory_token_usage": {
+        "input": 1243,
+        "output": 1036
+      },
+      "fallback_used": false,
+      "fill_ratio": 0.0,
+      "generation": 0,
+      "mutation": {
+        "operation": "SET",
+        "target_path": "observation.book_levels",
+        "value": 3
+      },
+      "opportunity": {
+        "action_outcomes": [
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 0,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 1,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 2,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          }
+        ],
+        "available": false,
+        "best_action_reward": -10000.0,
+        "best_available_fill_ratio": 0.0,
+        "best_available_reward": -10000.0,
+        "captured": null,
+        "chosen_action_reward": -10000.0,
+        "constant_outcome": true,
+        "decision_regret": 0.0,
+        "fillable_offsets": [],
+        "outcome_differentiated": false,
+        "selected_action_fillable": false,
+        "unavoidable_no_fill": true
+      },
+      "parse_success": true,
+      "reward": -10000.0,
+      "selected_action": 0,
+      "signed_markout": 0.0,
+      "spread_capture": 0.0,
+      "successor_harness_id": "8cd28a9db1a69c6400b33e2a",
+      "successor_measured": false,
+      "time_to_fill": null,
+      "time_to_first_fill": null,
+      "transition_status": "PROMOTED",
+      "unfilled_penalty": 10000.0,
+      "validation": {
+        "causality": "passed",
+        "compile": "passed",
+        "factory_output": "passed",
+        "interface": "passed",
+        "offline_smoke_test": "passed",
+        "schema_semantics": "passed",
+        "spec_diff": {
+          "observation.book_levels": {
+            "from": 1,
+            "to": 3
+          }
+        }
+      }
+    },
+    {
+      "active_harness_id": "8cd28a9db1a69c6400b33e2a",
+      "active_harness_version": 1,
+      "candidate_harness_id": "437d5c8965856fc03b78f736",
+      "decision_agent_error": null,
+      "decision_agent_latency_ms": 107328,
+      "decision_agent_token_usage": {
+        "input": 505,
+        "output": 3908
+      },
+      "decision_reason": "operational_validation_passed",
+      "diagnosis": {
+        "affected_metric": "reward",
+        "confidence": 0.6,
+        "diagnosis_id": "diagnosis-a846bd07de0dc4e6",
+        "evidence_refs": [
+          "evidence-g1:aggregate:reward",
+          "evidence-g1:aggregate:fill_ratio"
+        ],
+        "suspected_cause": "The direct decision procedure likely selects a default or minimally informed action (offset_ticks=0) without evaluating alternative offsets, leading to zero fills and a large unfilled penalty.",
+        "suspected_harness_component": "decision.procedure"
+      },
+      "episode_id": "ad9da31c7671e036aa63225d",
+      "episode_timestamp": 35100.938870878,
+      "evidence": {
+        "aggregate_metrics": {
+          "constraint_fallback_rate": 0.0,
+          "execution_value": 0.0,
+          "fees": 0.0,
+          "fill_ratio": 0.0,
+          "reward": -10000.0,
+          "signed_markout": 0.0,
+          "spread_capture": 0.0,
+          "unfilled_penalty": 10000.0
+        },
+        "evidence_id": "evidence-g1",
+        "experience_ids": [
+          "5fb07e8740fe23209f93c675"
+        ],
+        "metric_slices": {
+          "AAPL": {
+            "constraint_fallback_rate": 0.0,
+            "execution_value": 0.0,
+            "fees": 0.0,
+            "fill_ratio": 0.0,
+            "reward": -10000.0,
+            "signed_markout": 0.0,
+            "spread_capture": 0.0,
+            "unfilled_penalty": 10000.0
+          }
+        },
+        "sample_count": 1
+      },
+      "factory_backend": "llm",
+      "factory_decision": "PROMOTED",
+      "factory_error": null,
+      "factory_latency_ms": 28528,
+      "factory_model_config_hash": "59a1f51f0d49131efdfd320485c1d95a5494ba0b06f7634c82358fc022e7f934",
+      "factory_prompt_version": "factory-v4",
+      "factory_retry_count": 0,
+      "factory_token_usage": {
+        "input": 1322,
+        "output": 1585
+      },
+      "fallback_used": false,
+      "fill_ratio": 0.0,
+      "generation": 1,
+      "mutation": {
+        "operation": "SET",
+        "target_path": "decision.procedure",
+        "value": "compare_all_actions"
+      },
+      "opportunity": {
+        "action_outcomes": [
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 0,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 1,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 1.0,
+            "filled_quantity": 100,
+            "offset_ticks": 2,
+            "reward": 120000.0,
+            "time_to_first_fill": 0.826261545997113,
+            "time_to_full_fill": 5.9533887569996295
+          }
+        ],
+        "available": true,
+        "best_action_reward": 120000.0,
+        "best_available_fill_ratio": 1.0,
+        "best_available_reward": 120000.0,
+        "captured": false,
+        "chosen_action_reward": -10000.0,
+        "constant_outcome": false,
+        "decision_regret": 130000.0,
+        "fillable_offsets": [
+          2
+        ],
+        "outcome_differentiated": true,
+        "selected_action_fillable": false,
+        "unavoidable_no_fill": false
+      },
+      "parse_success": true,
+      "reward": -10000.0,
+      "selected_action": 0,
+      "signed_markout": 0.0,
+      "spread_capture": 0.0,
+      "successor_harness_id": "437d5c8965856fc03b78f736",
+      "successor_measured": false,
+      "time_to_fill": null,
+      "time_to_first_fill": null,
+      "transition_status": "PROMOTED",
+      "unfilled_penalty": 10000.0,
+      "validation": {
+        "causality": "passed",
+        "compile": "passed",
+        "factory_output": "passed",
+        "interface": "passed",
+        "offline_smoke_test": "passed",
+        "schema_semantics": "passed",
+        "spec_diff": {
+          "decision.procedure": {
+            "from": "direct",
+            "to": "compare_all_actions"
+          }
+        }
+      }
+    },
+    {
+      "active_harness_id": "437d5c8965856fc03b78f736",
+      "active_harness_version": 2,
+      "candidate_harness_id": "f5c6e7a2013055d026eb722e",
+      "decision_agent_error": null,
+      "decision_agent_latency_ms": 121141,
+      "decision_agent_token_usage": {
+        "input": 516,
+        "output": 5061
+      },
+      "decision_reason": "operational_validation_passed",
+      "diagnosis": {
+        "affected_metric": "fill_ratio",
+        "confidence": 0.6,
+        "diagnosis_id": "diagnosis-d400f7163aab3fd7",
+        "evidence_refs": [
+          "evidence-g2:aggregate:fill_ratio",
+          "evidence-g2:aggregate:unfilled_penalty"
+        ],
+        "suspected_cause": "The model only receives spread_ticks as a feature, which is insufficient to determine a fillable offset. It selected offset 0 (passive) and received no fills, resulting in a zero fill ratio and a large unfilled penalty.",
+        "suspected_harness_component": "observation.features"
+      },
+      "episode_id": "dccd3c2ceb92f0a53942db99",
+      "episode_timestamp": 36000.947697364,
+      "evidence": {
+        "aggregate_metrics": {
+          "constraint_fallback_rate": 0.0,
+          "execution_value": 0.0,
+          "fees": 0.0,
+          "fill_ratio": 0.0,
+          "reward": -10000.0,
+          "signed_markout": 0.0,
+          "spread_capture": 0.0,
+          "unfilled_penalty": 10000.0
+        },
+        "evidence_id": "evidence-g2",
+        "experience_ids": [
+          "806242835cb1374f91b050a6"
+        ],
+        "metric_slices": {
+          "AAPL": {
+            "constraint_fallback_rate": 0.0,
+            "execution_value": 0.0,
+            "fees": 0.0,
+            "fill_ratio": 0.0,
+            "reward": -10000.0,
+            "signed_markout": 0.0,
+            "spread_capture": 0.0,
+            "unfilled_penalty": 10000.0
+          }
+        },
+        "sample_count": 1
+      },
+      "factory_backend": "llm",
+      "factory_decision": "PROMOTED",
+      "factory_error": null,
+      "factory_latency_ms": 208764,
+      "factory_model_config_hash": "59a1f51f0d49131efdfd320485c1d95a5494ba0b06f7634c82358fc022e7f934",
+      "factory_prompt_version": "factory-v4",
+      "factory_retry_count": 1,
+      "factory_token_usage": {
+        "input": 1402,
+        "output": 2060
+      },
+      "fallback_used": false,
+      "fill_ratio": 0.0,
+      "generation": 2,
+      "mutation": {
+        "operation": "ADD",
+        "target_path": "augmentation.features",
+        "value": "level1_imbalance"
+      },
+      "opportunity": {
+        "action_outcomes": [
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 0,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 1,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 2,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          }
+        ],
+        "available": false,
+        "best_action_reward": -10000.0,
+        "best_available_fill_ratio": 0.0,
+        "best_available_reward": -10000.0,
+        "captured": null,
+        "chosen_action_reward": -10000.0,
+        "constant_outcome": true,
+        "decision_regret": 0.0,
+        "fillable_offsets": [],
+        "outcome_differentiated": false,
+        "selected_action_fillable": false,
+        "unavoidable_no_fill": true
+      },
+      "parse_success": true,
+      "reward": -10000.0,
+      "selected_action": 0,
+      "signed_markout": 0.0,
+      "spread_capture": 0.0,
+      "successor_harness_id": "f5c6e7a2013055d026eb722e",
+      "successor_measured": false,
+      "time_to_fill": null,
+      "time_to_first_fill": null,
+      "transition_status": "PROMOTED",
+      "unfilled_penalty": 10000.0,
+      "validation": {
+        "causality": "passed",
+        "compile": "passed",
+        "factory_output": "passed",
+        "interface": "passed",
+        "offline_smoke_test": "passed",
+        "schema_semantics": "passed",
+        "spec_diff": {
+          "augmentation.features": {
+            "from": [
+              "spread_ticks"
+            ],
+            "to": [
+              "spread_ticks",
+              "level1_imbalance"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "active_harness_id": "f5c6e7a2013055d026eb722e",
+      "active_harness_version": 3,
+      "candidate_harness_id": "60c2e06e175cd17dbaac39bb",
+      "decision_agent_error": null,
+      "decision_agent_latency_ms": 77640,
+      "decision_agent_token_usage": {
+        "input": 528,
+        "output": 3206
+      },
+      "decision_reason": "operational_validation_passed",
+      "diagnosis": {
+        "affected_metric": "fill_ratio",
+        "confidence": 0.6,
+        "diagnosis_id": "diagnosis-9222c8d135202d5d",
+        "evidence_refs": [
+          "evidence-g3:aggregate:fill_ratio",
+          "evidence-g3:aggregate:unfilled_penalty"
+        ],
+        "suspected_cause": "Current features (spread_ticks, level1_imbalance) do not provide enough trade-flow signal to select an executable offset, resulting in zero fills and maximum unfilled penalty.",
+        "suspected_harness_component": "augmentation.features"
+      },
+      "episode_id": "dc8d87530952266a79a68933",
+      "episode_timestamp": 36901.101914856,
+      "evidence": {
+        "aggregate_metrics": {
+          "constraint_fallback_rate": 0.0,
+          "execution_value": 0.0,
+          "fees": 0.0,
+          "fill_ratio": 0.0,
+          "reward": -10000.0,
+          "signed_markout": 0.0,
+          "spread_capture": 0.0,
+          "unfilled_penalty": 10000.0
+        },
+        "evidence_id": "evidence-g3",
+        "experience_ids": [
+          "ac8e892c29ed76dd203e73e0"
+        ],
+        "metric_slices": {
+          "AAPL": {
+            "constraint_fallback_rate": 0.0,
+            "execution_value": 0.0,
+            "fees": 0.0,
+            "fill_ratio": 0.0,
+            "reward": -10000.0,
+            "signed_markout": 0.0,
+            "spread_capture": 0.0,
+            "unfilled_penalty": 10000.0
+          }
+        },
+        "sample_count": 1
+      },
+      "factory_backend": "llm",
+      "factory_decision": "PROMOTED",
+      "factory_error": null,
+      "factory_latency_ms": 47949,
+      "factory_model_config_hash": "59a1f51f0d49131efdfd320485c1d95a5494ba0b06f7634c82358fc022e7f934",
+      "factory_prompt_version": "factory-v4",
+      "factory_retry_count": 0,
+      "factory_token_usage": {
+        "input": 1502,
+        "output": 2842
+      },
+      "fallback_used": false,
+      "fill_ratio": 0.0,
+      "generation": 3,
+      "mutation": {
+        "operation": "ADD",
+        "target_path": "augmentation.features",
+        "value": "recent_trade_imbalance"
+      },
+      "opportunity": {
+        "action_outcomes": [
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 0,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 1,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 2,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          }
+        ],
+        "available": false,
+        "best_action_reward": -10000.0,
+        "best_available_fill_ratio": 0.0,
+        "best_available_reward": -10000.0,
+        "captured": null,
+        "chosen_action_reward": -10000.0,
+        "constant_outcome": true,
+        "decision_regret": 0.0,
+        "fillable_offsets": [],
+        "outcome_differentiated": false,
+        "selected_action_fillable": false,
+        "unavoidable_no_fill": true
+      },
+      "parse_success": true,
+      "reward": -10000.0,
+      "selected_action": 0,
+      "signed_markout": 0.0,
+      "spread_capture": 0.0,
+      "successor_harness_id": "60c2e06e175cd17dbaac39bb",
+      "successor_measured": false,
+      "time_to_fill": null,
+      "time_to_first_fill": null,
+      "transition_status": "PROMOTED",
+      "unfilled_penalty": 10000.0,
+      "validation": {
+        "causality": "passed",
+        "compile": "passed",
+        "factory_output": "passed",
+        "interface": "passed",
+        "offline_smoke_test": "passed",
+        "schema_semantics": "passed",
+        "spec_diff": {
+          "augmentation.features": {
+            "from": [
+              "spread_ticks",
+              "level1_imbalance"
+            ],
+            "to": [
+              "spread_ticks",
+              "level1_imbalance",
+              "recent_trade_imbalance"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "active_harness_id": "60c2e06e175cd17dbaac39bb",
+      "active_harness_version": 4,
+      "candidate_harness_id": null,
+      "decision_agent_error": null,
+      "decision_agent_latency_ms": 519174,
+      "decision_agent_token_usage": {
+        "input": 540,
+        "output": 6850
+      },
+      "decision_reason": "ValueError: ValueError: confidence must be between zero and one",
+      "diagnosis": null,
+      "episode_id": "a58b5db8f198082d21f40978",
+      "episode_timestamp": 37801.114518189,
+      "evidence": {
+        "aggregate_metrics": {
+          "constraint_fallback_rate": 0.0,
+          "execution_value": 0.0,
+          "fees": 0.0,
+          "fill_ratio": 0.0,
+          "reward": -10000.0,
+          "signed_markout": 0.0,
+          "spread_capture": 0.0,
+          "unfilled_penalty": 10000.0
+        },
+        "evidence_id": "evidence-g4",
+        "experience_ids": [
+          "29be769d8c20fed9977899bf"
+        ],
+        "metric_slices": {
+          "AAPL": {
+            "constraint_fallback_rate": 0.0,
+            "execution_value": 0.0,
+            "fees": 0.0,
+            "fill_ratio": 0.0,
+            "reward": -10000.0,
+            "signed_markout": 0.0,
+            "spread_capture": 0.0,
+            "unfilled_penalty": 10000.0
+          }
+        },
+        "sample_count": 1
+      },
+      "factory_backend": "llm",
+      "factory_decision": "INVALID",
+      "factory_error": "ValueError: confidence must be between zero and one",
+      "factory_latency_ms": 28358,
+      "factory_model_config_hash": "59a1f51f0d49131efdfd320485c1d95a5494ba0b06f7634c82358fc022e7f934",
+      "factory_prompt_version": "factory-v4",
+      "factory_retry_count": 0,
+      "factory_token_usage": {
+        "input": 1603,
+        "output": 2013
+      },
+      "fallback_used": false,
+      "fill_ratio": 0.0,
+      "generation": 4,
+      "mutation": null,
+      "opportunity": {
+        "action_outcomes": [
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 0,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 1,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 2,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          }
+        ],
+        "available": false,
+        "best_action_reward": -10000.0,
+        "best_available_fill_ratio": 0.0,
+        "best_available_reward": -10000.0,
+        "captured": null,
+        "chosen_action_reward": -10000.0,
+        "constant_outcome": true,
+        "decision_regret": 0.0,
+        "fillable_offsets": [],
+        "outcome_differentiated": false,
+        "selected_action_fillable": false,
+        "unavoidable_no_fill": true
+      },
+      "parse_success": true,
+      "reward": -10000.0,
+      "selected_action": 2,
+      "signed_markout": 0.0,
+      "spread_capture": 0.0,
+      "successor_harness_id": "60c2e06e175cd17dbaac39bb",
+      "successor_measured": true,
+      "time_to_fill": null,
+      "time_to_first_fill": null,
+      "transition_status": "INVALID",
+      "unfilled_penalty": 10000.0,
+      "validation": {
+        "causality": "not_run",
+        "compile": "not_run",
+        "error": "ValueError: ValueError: confidence must be between zero and one",
+        "factory_output": "failed",
+        "interface": "not_run",
+        "offline_smoke_test": "not_run",
+        "schema_semantics": "not_run"
+      }
+    },
+    {
+      "active_harness_id": "60c2e06e175cd17dbaac39bb",
+      "active_harness_version": 4,
+      "candidate_harness_id": "2789e6258c37d0e858a88be8",
+      "decision_agent_error": null,
+      "decision_agent_latency_ms": 31528,
+      "decision_agent_token_usage": {
+        "input": 534,
+        "output": 2159
+      },
+      "decision_reason": "operational_validation_passed",
+      "diagnosis": {
+        "affected_metric": "fill_ratio",
+        "confidence": 0.6,
+        "diagnosis_id": "diagnosis-6caa42658772414d",
+        "evidence_refs": [
+          "evidence-g5:aggregate:fill_ratio",
+          "evidence-g5:aggregate:unfilled_penalty"
+        ],
+        "suspected_cause": "The current feature set (spread_ticks, level1_imbalance, recent_trade_imbalance) does not provide a precise estimate of the fair price, leading the decision procedure to select an offset that is not marketable, resulting in zero fills and a large unfilled penalty.",
+        "suspected_harness_component": "augmentation.features"
+      },
+      "episode_id": "8865a93ee6ad35e4f019a707",
+      "episode_timestamp": 38701.319541967,
+      "evidence": {
+        "aggregate_metrics": {
+          "constraint_fallback_rate": 0.0,
+          "execution_value": 0.0,
+          "fees": 0.0,
+          "fill_ratio": 0.0,
+          "reward": -10000.0,
+          "signed_markout": 0.0,
+          "spread_capture": 0.0,
+          "unfilled_penalty": 10000.0
+        },
+        "evidence_id": "evidence-g5",
+        "experience_ids": [
+          "8a1713b4441698aa0a2011cf"
+        ],
+        "metric_slices": {
+          "AAPL": {
+            "constraint_fallback_rate": 0.0,
+            "execution_value": 0.0,
+            "fees": 0.0,
+            "fill_ratio": 0.0,
+            "reward": -10000.0,
+            "signed_markout": 0.0,
+            "spread_capture": 0.0,
+            "unfilled_penalty": 10000.0
+          }
+        },
+        "sample_count": 1
+      },
+      "factory_backend": "llm",
+      "factory_decision": "PROMOTED",
+      "factory_error": null,
+      "factory_latency_ms": 46291,
+      "factory_model_config_hash": "59a1f51f0d49131efdfd320485c1d95a5494ba0b06f7634c82358fc022e7f934",
+      "factory_prompt_version": "factory-v4",
+      "factory_retry_count": 0,
+      "factory_token_usage": {
+        "input": 1632,
+        "output": 3424
+      },
+      "fallback_used": false,
+      "fill_ratio": 0.0,
+      "generation": 5,
+      "mutation": {
+        "operation": "ADD",
+        "target_path": "augmentation.features",
+        "value": "microprice"
+      },
+      "opportunity": {
+        "action_outcomes": [
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 0,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 1,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 2,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          }
+        ],
+        "available": false,
+        "best_action_reward": -10000.0,
+        "best_available_fill_ratio": 0.0,
+        "best_available_reward": -10000.0,
+        "captured": null,
+        "chosen_action_reward": -10000.0,
+        "constant_outcome": true,
+        "decision_regret": 0.0,
+        "fillable_offsets": [],
+        "outcome_differentiated": false,
+        "selected_action_fillable": false,
+        "unavoidable_no_fill": true
+      },
+      "parse_success": true,
+      "reward": -10000.0,
+      "selected_action": 1,
+      "signed_markout": 0.0,
+      "spread_capture": 0.0,
+      "successor_harness_id": "2789e6258c37d0e858a88be8",
+      "successor_measured": false,
+      "time_to_fill": null,
+      "time_to_first_fill": null,
+      "transition_status": "PROMOTED",
+      "unfilled_penalty": 10000.0,
+      "validation": {
+        "causality": "passed",
+        "compile": "passed",
+        "factory_output": "passed",
+        "interface": "passed",
+        "offline_smoke_test": "passed",
+        "schema_semantics": "passed",
+        "spec_diff": {
+          "augmentation.features": {
+            "from": [
+              "spread_ticks",
+              "level1_imbalance",
+              "recent_trade_imbalance"
+            ],
+            "to": [
+              "spread_ticks",
+              "level1_imbalance",
+              "recent_trade_imbalance",
+              "microprice"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "active_harness_id": "2789e6258c37d0e858a88be8",
+      "active_harness_version": 5,
+      "candidate_harness_id": "fff7e742d831b93c1b0996f5",
+      "decision_agent_error": null,
+      "decision_agent_latency_ms": 85216,
+      "decision_agent_token_usage": {
+        "input": 552,
+        "output": 4408
+      },
+      "decision_reason": "operational_validation_passed",
+      "diagnosis": {
+        "affected_metric": "fill_ratio",
+        "confidence": 0.7,
+        "diagnosis_id": "diagnosis-b539eb94901c46c1",
+        "evidence_refs": [
+          "evidence-g6:aggregate:fill_ratio",
+          "evidence-g6:aggregate:unfilled_penalty"
+        ],
+        "suspected_cause": "The agent selected offset 0, which is the most passive allowed offset, and the episode resulted in zero fills. This suggests offset 0 is not executable in the current market conditions, leaving the order unfilled and incurring the full unfilled penalty.",
+        "suspected_harness_component": "constraints.allowed_offsets"
+      },
+      "episode_id": "f30a5aef9a42434586647221",
+      "episode_timestamp": 39601.319635311,
+      "evidence": {
+        "aggregate_metrics": {
+          "constraint_fallback_rate": 0.0,
+          "execution_value": 0.0,
+          "fees": 0.0,
+          "fill_ratio": 0.0,
+          "reward": -10000.0,
+          "signed_markout": 0.0,
+          "spread_capture": 0.0,
+          "unfilled_penalty": 10000.0
+        },
+        "evidence_id": "evidence-g6",
+        "experience_ids": [
+          "3120e17229ea2d5ee31b221e"
+        ],
+        "metric_slices": {
+          "AAPL": {
+            "constraint_fallback_rate": 0.0,
+            "execution_value": 0.0,
+            "fees": 0.0,
+            "fill_ratio": 0.0,
+            "reward": -10000.0,
+            "signed_markout": 0.0,
+            "spread_capture": 0.0,
+            "unfilled_penalty": 10000.0
+          }
+        },
+        "sample_count": 1
+      },
+      "factory_backend": "llm",
+      "factory_decision": "PROMOTED",
+      "factory_error": null,
+      "factory_latency_ms": 21363,
+      "factory_model_config_hash": "59a1f51f0d49131efdfd320485c1d95a5494ba0b06f7634c82358fc022e7f934",
+      "factory_prompt_version": "factory-v4",
+      "factory_retry_count": 0,
+      "factory_token_usage": {
+        "input": 1720,
+        "output": 1819
+      },
+      "fallback_used": false,
+      "fill_ratio": 0.0,
+      "generation": 6,
+      "mutation": {
+        "operation": "REMOVE",
+        "target_path": "constraints.allowed_offsets",
+        "value": 0
+      },
+      "opportunity": {
+        "action_outcomes": [
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 0,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.26,
+            "filled_quantity": 26,
+            "offset_ticks": 1,
+            "reward": 38100.0,
+            "time_to_first_fill": 22.83210701799544,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 1.0,
+            "filled_quantity": 100,
+            "offset_ticks": 2,
+            "reward": 185000.0,
+            "time_to_first_fill": 22.852429531994858,
+            "time_to_full_fill": 22.852429531994858
+          }
+        ],
+        "available": true,
+        "best_action_reward": 185000.0,
+        "best_available_fill_ratio": 1.0,
+        "best_available_reward": 185000.0,
+        "captured": false,
+        "chosen_action_reward": -10000.0,
+        "constant_outcome": false,
+        "decision_regret": 195000.0,
+        "fillable_offsets": [
+          1,
+          2
+        ],
+        "outcome_differentiated": true,
+        "selected_action_fillable": false,
+        "unavoidable_no_fill": false
+      },
+      "parse_success": true,
+      "reward": -10000.0,
+      "selected_action": 0,
+      "signed_markout": 0.0,
+      "spread_capture": 0.0,
+      "successor_harness_id": "fff7e742d831b93c1b0996f5",
+      "successor_measured": false,
+      "time_to_fill": null,
+      "time_to_first_fill": null,
+      "transition_status": "PROMOTED",
+      "unfilled_penalty": 10000.0,
+      "validation": {
+        "causality": "passed",
+        "compile": "passed",
+        "factory_output": "passed",
+        "interface": "passed",
+        "offline_smoke_test": "passed",
+        "schema_semantics": "passed",
+        "spec_diff": {
+          "constraints.allowed_offsets": {
+            "from": [
+              0,
+              1,
+              2
+            ],
+            "to": [
+              1,
+              2
+            ]
+          }
+        }
+      }
+    },
+    {
+      "active_harness_id": "fff7e742d831b93c1b0996f5",
+      "active_harness_version": 6,
+      "candidate_harness_id": "8a42ae180968430a58a902ea",
+      "decision_agent_error": null,
+      "decision_agent_latency_ms": 91842,
+      "decision_agent_token_usage": {
+        "input": 547,
+        "output": 5462
+      },
+      "decision_reason": "operational_validation_passed",
+      "diagnosis": {
+        "affected_metric": "fill_ratio",
+        "confidence": 0.6,
+        "diagnosis_id": "diagnosis-1360885a4e9aee9d",
+        "evidence_refs": [
+          "evidence-g7:aggregate:fill_ratio",
+          "evidence-g7:aggregate:unfilled_penalty"
+        ],
+        "suspected_cause": "The allowed offsets exclude 0, and the selected offset 1 results in zero fills, suggesting the agent cannot quote at the mid and may be missing fills in tight markets.",
+        "suspected_harness_component": "constraints.allowed_offsets"
+      },
+      "episode_id": "8aa4b07bd5ee6b136add6c12",
+      "episode_timestamp": 40501.358058362,
+      "evidence": {
+        "aggregate_metrics": {
+          "constraint_fallback_rate": 0.0,
+          "execution_value": 0.0,
+          "fees": 0.0,
+          "fill_ratio": 0.0,
+          "reward": -10000.0,
+          "signed_markout": 0.0,
+          "spread_capture": 0.0,
+          "unfilled_penalty": 10000.0
+        },
+        "evidence_id": "evidence-g7",
+        "experience_ids": [
+          "bdfe0c0bd93f3aba6d977091"
+        ],
+        "metric_slices": {
+          "AAPL": {
+            "constraint_fallback_rate": 0.0,
+            "execution_value": 0.0,
+            "fees": 0.0,
+            "fill_ratio": 0.0,
+            "reward": -10000.0,
+            "signed_markout": 0.0,
+            "spread_capture": 0.0,
+            "unfilled_penalty": 10000.0
+          }
+        },
+        "sample_count": 1
+      },
+      "factory_backend": "llm",
+      "factory_decision": "PROMOTED",
+      "factory_error": null,
+      "factory_latency_ms": 20378,
+      "factory_model_config_hash": "59a1f51f0d49131efdfd320485c1d95a5494ba0b06f7634c82358fc022e7f934",
+      "factory_prompt_version": "factory-v4",
+      "factory_retry_count": 0,
+      "factory_token_usage": {
+        "input": 1805,
+        "output": 1290
+      },
+      "fallback_used": false,
+      "fill_ratio": 0.0,
+      "generation": 7,
+      "mutation": {
+        "operation": "ADD",
+        "target_path": "constraints.allowed_offsets",
+        "value": 0
+      },
+      "opportunity": {
+        "action_outcomes": [
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 0,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 1,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 2,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          }
+        ],
+        "available": false,
+        "best_action_reward": -10000.0,
+        "best_available_fill_ratio": 0.0,
+        "best_available_reward": -10000.0,
+        "captured": null,
+        "chosen_action_reward": -10000.0,
+        "constant_outcome": true,
+        "decision_regret": 0.0,
+        "fillable_offsets": [],
+        "outcome_differentiated": false,
+        "selected_action_fillable": false,
+        "unavoidable_no_fill": true
+      },
+      "parse_success": true,
+      "reward": -10000.0,
+      "selected_action": 1,
+      "signed_markout": 0.0,
+      "spread_capture": 0.0,
+      "successor_harness_id": "8a42ae180968430a58a902ea",
+      "successor_measured": false,
+      "time_to_fill": null,
+      "time_to_first_fill": null,
+      "transition_status": "PROMOTED",
+      "unfilled_penalty": 10000.0,
+      "validation": {
+        "causality": "passed",
+        "compile": "passed",
+        "factory_output": "passed",
+        "interface": "passed",
+        "offline_smoke_test": "passed",
+        "schema_semantics": "passed",
+        "spec_diff": {
+          "constraints.allowed_offsets": {
+            "from": [
+              1,
+              2
+            ],
+            "to": [
+              1,
+              2,
+              0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "active_harness_id": "8a42ae180968430a58a902ea",
+      "active_harness_version": 7,
+      "candidate_harness_id": "3fc6b5f9013b48021bf807d4",
+      "decision_agent_error": null,
+      "decision_agent_latency_ms": 78947,
+      "decision_agent_token_usage": {
+        "input": 553,
+        "output": 5081
+      },
+      "decision_reason": "operational_validation_passed",
+      "diagnosis": {
+        "affected_metric": "fill_ratio",
+        "confidence": 0.6,
+        "diagnosis_id": "diagnosis-0a6b8fec641fecd5",
+        "evidence_refs": [
+          "evidence-g8:aggregate:fill_ratio",
+          "evidence-g8:aggregate:unfilled_penalty"
+        ],
+        "suspected_cause": "Current book depth of 3 levels may be insufficient for the agent to identify a fillable offset, leading to zero fills and maximum unfilled penalty.",
+        "suspected_harness_component": "observation.book_levels"
+      },
+      "episode_id": "a1da03d6bf325167c3fe3506",
+      "episode_timestamp": 41401.418754691,
+      "evidence": {
+        "aggregate_metrics": {
+          "constraint_fallback_rate": 0.0,
+          "execution_value": 0.0,
+          "fees": 0.0,
+          "fill_ratio": 0.0,
+          "reward": -10000.0,
+          "signed_markout": 0.0,
+          "spread_capture": 0.0,
+          "unfilled_penalty": 10000.0
+        },
+        "evidence_id": "evidence-g8",
+        "experience_ids": [
+          "2f4e825285194339042a1cc4"
+        ],
+        "metric_slices": {
+          "AAPL": {
+            "constraint_fallback_rate": 0.0,
+            "execution_value": 0.0,
+            "fees": 0.0,
+            "fill_ratio": 0.0,
+            "reward": -10000.0,
+            "signed_markout": 0.0,
+            "spread_capture": 0.0,
+            "unfilled_penalty": 10000.0
+          }
+        },
+        "sample_count": 1
+      },
+      "factory_backend": "llm",
+      "factory_decision": "PROMOTED",
+      "factory_error": null,
+      "factory_latency_ms": 27045,
+      "factory_model_config_hash": "59a1f51f0d49131efdfd320485c1d95a5494ba0b06f7634c82358fc022e7f934",
+      "factory_prompt_version": "factory-v4",
+      "factory_retry_count": 0,
+      "factory_token_usage": {
+        "input": 1887,
+        "output": 1565
+      },
+      "fallback_used": false,
+      "fill_ratio": 0.0,
+      "generation": 8,
+      "mutation": {
+        "operation": "SET",
+        "target_path": "observation.book_levels",
+        "value": 5
+      },
+      "opportunity": {
+        "action_outcomes": [
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 0,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 1,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 2,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          }
+        ],
+        "available": false,
+        "best_action_reward": -10000.0,
+        "best_available_fill_ratio": 0.0,
+        "best_available_reward": -10000.0,
+        "captured": null,
+        "chosen_action_reward": -10000.0,
+        "constant_outcome": true,
+        "decision_regret": 0.0,
+        "fillable_offsets": [],
+        "outcome_differentiated": false,
+        "selected_action_fillable": false,
+        "unavoidable_no_fill": true
+      },
+      "parse_success": true,
+      "reward": -10000.0,
+      "selected_action": 0,
+      "signed_markout": 0.0,
+      "spread_capture": 0.0,
+      "successor_harness_id": "3fc6b5f9013b48021bf807d4",
+      "successor_measured": false,
+      "time_to_fill": null,
+      "time_to_first_fill": null,
+      "transition_status": "PROMOTED",
+      "unfilled_penalty": 10000.0,
+      "validation": {
+        "causality": "passed",
+        "compile": "passed",
+        "factory_output": "passed",
+        "interface": "passed",
+        "offline_smoke_test": "passed",
+        "schema_semantics": "passed",
+        "spec_diff": {
+          "observation.book_levels": {
+            "from": 3,
+            "to": 5
+          }
+        }
+      }
+    },
+    {
+      "active_harness_id": "3fc6b5f9013b48021bf807d4",
+      "active_harness_version": 8,
+      "candidate_harness_id": "ad55ca3fd73902da27820a47",
+      "decision_agent_error": null,
+      "decision_agent_latency_ms": 105412,
+      "decision_agent_token_usage": {
+        "input": 570,
+        "output": 6440
+      },
+      "decision_reason": "operational_validation_passed",
+      "diagnosis": {
+        "affected_metric": "fill_ratio",
+        "confidence": 0.7,
+        "diagnosis_id": "diagnosis-545c0cba3ff68b35",
+        "evidence_refs": [
+          "evidence-g9:aggregate:fill_ratio",
+          "evidence-g9:aggregate:unfilled_penalty"
+        ],
+        "suspected_cause": "The agent selected offset 0, a non-marketable passive order, resulting in zero fills and the maximum unfilled penalty.",
+        "suspected_harness_component": "constraints.allowed_offsets"
+      },
+      "episode_id": "42e9804643eccc0f473ab493",
+      "episode_timestamp": 42301.825841264,
+      "evidence": {
+        "aggregate_metrics": {
+          "constraint_fallback_rate": 0.0,
+          "execution_value": 0.0,
+          "fees": 0.0,
+          "fill_ratio": 0.0,
+          "reward": -10000.0,
+          "signed_markout": 0.0,
+          "spread_capture": 0.0,
+          "unfilled_penalty": 10000.0
+        },
+        "evidence_id": "evidence-g9",
+        "experience_ids": [
+          "1d3dff8f39336aabbf4ac8c3"
+        ],
+        "metric_slices": {
+          "AAPL": {
+            "constraint_fallback_rate": 0.0,
+            "execution_value": 0.0,
+            "fees": 0.0,
+            "fill_ratio": 0.0,
+            "reward": -10000.0,
+            "signed_markout": 0.0,
+            "spread_capture": 0.0,
+            "unfilled_penalty": 10000.0
+          }
+        },
+        "sample_count": 1
+      },
+      "factory_backend": "llm",
+      "factory_decision": "PROMOTED",
+      "factory_error": null,
+      "factory_latency_ms": 39769,
+      "factory_model_config_hash": "59a1f51f0d49131efdfd320485c1d95a5494ba0b06f7634c82358fc022e7f934",
+      "factory_prompt_version": "factory-v4",
+      "factory_retry_count": 0,
+      "factory_token_usage": {
+        "input": 1973,
+        "output": 2919
+      },
+      "fallback_used": false,
+      "fill_ratio": 0.0,
+      "generation": 9,
+      "mutation": {
+        "operation": "REMOVE",
+        "target_path": "constraints.allowed_offsets",
+        "value": 0
+      },
+      "opportunity": {
+        "action_outcomes": [
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 0,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 1,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 2,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          }
+        ],
+        "available": false,
+        "best_action_reward": -10000.0,
+        "best_available_fill_ratio": 0.0,
+        "best_available_reward": -10000.0,
+        "captured": null,
+        "chosen_action_reward": -10000.0,
+        "constant_outcome": true,
+        "decision_regret": 0.0,
+        "fillable_offsets": [],
+        "outcome_differentiated": false,
+        "selected_action_fillable": false,
+        "unavoidable_no_fill": true
+      },
+      "parse_success": true,
+      "reward": -10000.0,
+      "selected_action": 0,
+      "signed_markout": 0.0,
+      "spread_capture": 0.0,
+      "successor_harness_id": "ad55ca3fd73902da27820a47",
+      "successor_measured": false,
+      "time_to_fill": null,
+      "time_to_first_fill": null,
+      "transition_status": "PROMOTED",
+      "unfilled_penalty": 10000.0,
+      "validation": {
+        "causality": "passed",
+        "compile": "passed",
+        "factory_output": "passed",
+        "interface": "passed",
+        "offline_smoke_test": "passed",
+        "schema_semantics": "passed",
+        "spec_diff": {
+          "constraints.allowed_offsets": {
+            "from": [
+              1,
+              2,
+              0
+            ],
+            "to": [
+              1,
+              2
+            ]
+          }
+        }
+      }
+    },
+    {
+      "active_harness_id": "ad55ca3fd73902da27820a47",
+      "active_harness_version": 9,
+      "candidate_harness_id": null,
+      "decision_agent_error": null,
+      "decision_agent_latency_ms": 28863,
+      "decision_agent_token_usage": {
+        "input": 569,
+        "output": 2383
+      },
+      "decision_reason": "ValueError: ValueError: confidence must be between zero and one",
+      "diagnosis": null,
+      "episode_id": "7ede3701badefa001cfee126",
+      "episode_timestamp": 43202.483040469,
+      "evidence": {
+        "aggregate_metrics": {
+          "constraint_fallback_rate": 0.0,
+          "execution_value": 0.0,
+          "fees": 0.0,
+          "fill_ratio": 0.0,
+          "reward": -10000.0,
+          "signed_markout": 0.0,
+          "spread_capture": 0.0,
+          "unfilled_penalty": 10000.0
+        },
+        "evidence_id": "evidence-g10",
+        "experience_ids": [
+          "d6b6f96d59c9df2ed290e24f"
+        ],
+        "metric_slices": {
+          "AAPL": {
+            "constraint_fallback_rate": 0.0,
+            "execution_value": 0.0,
+            "fees": 0.0,
+            "fill_ratio": 0.0,
+            "reward": -10000.0,
+            "signed_markout": 0.0,
+            "spread_capture": 0.0,
+            "unfilled_penalty": 10000.0
+          }
+        },
+        "sample_count": 1
+      },
+      "factory_backend": "llm",
+      "factory_decision": "INVALID",
+      "factory_error": "ValueError: confidence must be between zero and one",
+      "factory_latency_ms": 41120,
+      "factory_model_config_hash": "59a1f51f0d49131efdfd320485c1d95a5494ba0b06f7634c82358fc022e7f934",
+      "factory_prompt_version": "factory-v4",
+      "factory_retry_count": 0,
+      "factory_token_usage": {
+        "input": 2054,
+        "output": 1601
+      },
+      "fallback_used": false,
+      "fill_ratio": 0.0,
+      "generation": 10,
+      "mutation": null,
+      "opportunity": {
+        "action_outcomes": [
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 0,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 1,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 2,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          }
+        ],
+        "available": false,
+        "best_action_reward": -10000.0,
+        "best_available_fill_ratio": 0.0,
+        "best_available_reward": -10000.0,
+        "captured": null,
+        "chosen_action_reward": -10000.0,
+        "constant_outcome": true,
+        "decision_regret": 0.0,
+        "fillable_offsets": [],
+        "outcome_differentiated": false,
+        "selected_action_fillable": false,
+        "unavoidable_no_fill": true
+      },
+      "parse_success": true,
+      "reward": -10000.0,
+      "selected_action": 1,
+      "signed_markout": 0.0,
+      "spread_capture": 0.0,
+      "successor_harness_id": "ad55ca3fd73902da27820a47",
+      "successor_measured": true,
+      "time_to_fill": null,
+      "time_to_first_fill": null,
+      "transition_status": "INVALID",
+      "unfilled_penalty": 10000.0,
+      "validation": {
+        "causality": "not_run",
+        "compile": "not_run",
+        "error": "ValueError: ValueError: confidence must be between zero and one",
+        "factory_output": "failed",
+        "interface": "not_run",
+        "offline_smoke_test": "not_run",
+        "schema_semantics": "not_run"
+      }
+    },
+    {
+      "active_harness_id": "ad55ca3fd73902da27820a47",
+      "active_harness_version": 9,
+      "candidate_harness_id": "3fc6b5f9013b48021bf807d4",
+      "decision_agent_error": null,
+      "decision_agent_latency_ms": 98452,
+      "decision_agent_token_usage": {
+        "input": 579,
+        "output": 4305
+      },
+      "decision_reason": "operational_validation_passed",
+      "diagnosis": {
+        "affected_metric": "fill_ratio",
+        "confidence": 0.7,
+        "diagnosis_id": "diagnosis-ed152dec77e1e626",
+        "evidence_refs": [
+          "evidence-g11:aggregate:fill_ratio",
+          "evidence-g11:aggregate:unfilled_penalty"
+        ],
+        "suspected_cause": "The allowed offsets are [1,2], excluding 0, so the agent cannot place a marketable limit order that would cross the spread and fill. The selected action at offset 1 did not fill, resulting in zero fills and a large unfilled penalty.",
+        "suspected_harness_component": "constraints.allowed_offsets"
+      },
+      "episode_id": "6955053788a14433b8771d34",
+      "episode_timestamp": 44102.808546395,
+      "evidence": {
+        "aggregate_metrics": {
+          "constraint_fallback_rate": 0.0,
+          "execution_value": 0.0,
+          "fees": 0.0,
+          "fill_ratio": 0.0,
+          "reward": -10000.0,
+          "signed_markout": 0.0,
+          "spread_capture": 0.0,
+          "unfilled_penalty": 10000.0
+        },
+        "evidence_id": "evidence-g11",
+        "experience_ids": [
+          "a7d0b86f894305489bb4ea1e"
+        ],
+        "metric_slices": {
+          "AAPL": {
+            "constraint_fallback_rate": 0.0,
+            "execution_value": 0.0,
+            "fees": 0.0,
+            "fill_ratio": 0.0,
+            "reward": -10000.0,
+            "signed_markout": 0.0,
+            "spread_capture": 0.0,
+            "unfilled_penalty": 10000.0
+          }
+        },
+        "sample_count": 1
+      },
+      "factory_backend": "llm",
+      "factory_decision": "PROMOTED",
+      "factory_error": null,
+      "factory_latency_ms": 22106,
+      "factory_model_config_hash": "59a1f51f0d49131efdfd320485c1d95a5494ba0b06f7634c82358fc022e7f934",
+      "factory_prompt_version": "factory-v4",
+      "factory_retry_count": 0,
+      "factory_token_usage": {
+        "input": 1995,
+        "output": 1790
+      },
+      "fallback_used": false,
+      "fill_ratio": 0.0,
+      "generation": 11,
+      "mutation": {
+        "operation": "ADD",
+        "target_path": "constraints.allowed_offsets",
+        "value": 0
+      },
+      "opportunity": {
+        "action_outcomes": [
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 0,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 1,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 2,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          }
+        ],
+        "available": false,
+        "best_action_reward": -10000.0,
+        "best_available_fill_ratio": 0.0,
+        "best_available_reward": -10000.0,
+        "captured": null,
+        "chosen_action_reward": -10000.0,
+        "constant_outcome": true,
+        "decision_regret": 0.0,
+        "fillable_offsets": [],
+        "outcome_differentiated": false,
+        "selected_action_fillable": false,
+        "unavoidable_no_fill": true
+      },
+      "parse_success": true,
+      "reward": -10000.0,
+      "selected_action": 1,
+      "signed_markout": 0.0,
+      "spread_capture": 0.0,
+      "successor_harness_id": "3fc6b5f9013b48021bf807d4",
+      "successor_measured": false,
+      "time_to_fill": null,
+      "time_to_first_fill": null,
+      "transition_status": "PROMOTED",
+      "unfilled_penalty": 10000.0,
+      "validation": {
+        "causality": "passed",
+        "compile": "passed",
+        "factory_output": "passed",
+        "interface": "passed",
+        "offline_smoke_test": "passed",
+        "schema_semantics": "passed",
+        "spec_diff": {
+          "constraints.allowed_offsets": {
+            "from": [
+              1,
+              2
+            ],
+            "to": [
+              1,
+              2,
+              0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "active_harness_id": "3fc6b5f9013b48021bf807d4",
+      "active_harness_version": 10,
+      "candidate_harness_id": "4e35dc90be505d618c173e7a",
+      "decision_agent_error": null,
+      "decision_agent_latency_ms": 81230,
+      "decision_agent_token_usage": {
+        "input": 573,
+        "output": 4934
+      },
+      "decision_reason": "operational_validation_passed",
+      "diagnosis": {
+        "affected_metric": "signed_markout",
+        "confidence": 0.6,
+        "diagnosis_id": "diagnosis-dbb5e57393868c53",
+        "evidence_refs": [
+          "evidence-g12:aggregate:signed_markout",
+          "evidence-g12:aggregate:reward"
+        ],
+        "suspected_cause": "Current features lack short-term volatility information, which may be needed to predict adverse price movements and improve offset selection, leading to negative markout.",
+        "suspected_harness_component": "augmentation.features"
+      },
+      "episode_id": "2e30febeb78ca8a92bc099c4",
+      "episode_timestamp": 45003.193768985,
+      "evidence": {
+        "aggregate_metrics": {
+          "constraint_fallback_rate": 0.0,
+          "execution_value": -92000.0,
+          "fees": 0.0,
+          "fill_ratio": 0.92,
+          "reward": -92800.0,
+          "signed_markout": -1000.0,
+          "spread_capture": 1350.0,
+          "unfilled_penalty": 800.0
+        },
+        "evidence_id": "evidence-g12",
+        "experience_ids": [
+          "709ff3554eaf83f6cc35d94f"
+        ],
+        "metric_slices": {
+          "AAPL": {
+            "constraint_fallback_rate": 0.0,
+            "execution_value": -92000.0,
+            "fees": 0.0,
+            "fill_ratio": 0.92,
+            "reward": -92800.0,
+            "signed_markout": -1000.0,
+            "spread_capture": 1350.0,
+            "unfilled_penalty": 800.0
+          }
+        },
+        "sample_count": 1
+      },
+      "factory_backend": "llm",
+      "factory_decision": "PROMOTED",
+      "factory_error": null,
+      "factory_latency_ms": 47684,
+      "factory_model_config_hash": "59a1f51f0d49131efdfd320485c1d95a5494ba0b06f7634c82358fc022e7f934",
+      "factory_prompt_version": "factory-v4",
+      "factory_retry_count": 0,
+      "factory_token_usage": {
+        "input": 2018,
+        "output": 2377
+      },
+      "fallback_used": false,
+      "fill_ratio": 0.92,
+      "generation": 12,
+      "mutation": {
+        "operation": "ADD",
+        "target_path": "augmentation.features",
+        "value": "short_term_volatility"
+      },
+      "opportunity": {
+        "action_outcomes": [
+          {
+            "fill_ratio": 0.56,
+            "filled_quantity": 56,
+            "offset_ticks": 0,
+            "reward": -66000.0,
+            "time_to_first_fill": 24.488511726995057,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.92,
+            "filled_quantity": 92,
+            "offset_ticks": 1,
+            "reward": -92800.0,
+            "time_to_first_fill": 10.19190507899475,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 2,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          }
+        ],
+        "available": true,
+        "best_action_reward": -10000.0,
+        "best_available_fill_ratio": 0.92,
+        "best_available_reward": -10000.0,
+        "captured": true,
+        "chosen_action_reward": -92800.0,
+        "constant_outcome": false,
+        "decision_regret": 82800.0,
+        "fillable_offsets": [
+          0,
+          1
+        ],
+        "outcome_differentiated": true,
+        "selected_action_fillable": true,
+        "unavoidable_no_fill": false
+      },
+      "parse_success": true,
+      "reward": -92800.0,
+      "selected_action": 1,
+      "signed_markout": -1000.0,
+      "spread_capture": 1350.0,
+      "successor_harness_id": "4e35dc90be505d618c173e7a",
+      "successor_measured": false,
+      "time_to_fill": null,
+      "time_to_first_fill": 10.19190507899475,
+      "transition_status": "PROMOTED",
+      "unfilled_penalty": 800.0,
+      "validation": {
+        "causality": "passed",
+        "compile": "passed",
+        "factory_output": "passed",
+        "interface": "passed",
+        "offline_smoke_test": "passed",
+        "schema_semantics": "passed",
+        "spec_diff": {
+          "augmentation.features": {
+            "from": [
+              "spread_ticks",
+              "level1_imbalance",
+              "recent_trade_imbalance",
+              "microprice"
+            ],
+            "to": [
+              "spread_ticks",
+              "level1_imbalance",
+              "recent_trade_imbalance",
+              "microprice",
+              "short_term_volatility"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "active_harness_id": "4e35dc90be505d618c173e7a",
+      "active_harness_version": 11,
+      "candidate_harness_id": "97ab192d947a4b4316cb295f",
+      "decision_agent_error": null,
+      "decision_agent_latency_ms": 60831,
+      "decision_agent_token_usage": {
+        "input": 585,
+        "output": 2714
+      },
+      "decision_reason": "operational_validation_passed",
+      "diagnosis": {
+        "affected_metric": "fill_ratio",
+        "confidence": 0.6,
+        "diagnosis_id": "diagnosis-a1096f6899c33954",
+        "evidence_refs": [
+          "evidence-g13:aggregate:fill_ratio",
+          "evidence-g13:aggregate:unfilled_penalty"
+        ],
+        "suspected_cause": "The current compare_all_actions procedure may not be effectively leveraging the augmented feature set, leading to conservative offset selection and low fill ratio.",
+        "suspected_harness_component": "decision.procedure"
+      },
+      "episode_id": "b0f42a5cf1aa6b424046e3d7",
+      "episode_timestamp": 45904.3916868,
+      "evidence": {
+        "aggregate_metrics": {
+          "constraint_fallback_rate": 0.0,
+          "execution_value": 179200.0,
+          "fees": 0.0,
+          "fill_ratio": 0.28,
+          "reward": 172000.0,
+          "signed_markout": 6400.0,
+          "spread_capture": 900.0,
+          "unfilled_penalty": 7200.0
+        },
+        "evidence_id": "evidence-g13",
+        "experience_ids": [
+          "c08be42c3f04c484c5173b14"
+        ],
+        "metric_slices": {
+          "AAPL": {
+            "constraint_fallback_rate": 0.0,
+            "execution_value": 179200.0,
+            "fees": 0.0,
+            "fill_ratio": 0.28,
+            "reward": 172000.0,
+            "signed_markout": 6400.0,
+            "spread_capture": 900.0,
+            "unfilled_penalty": 7200.0
+          }
+        },
+        "sample_count": 1
+      },
+      "factory_backend": "llm",
+      "factory_decision": "PROMOTED",
+      "factory_error": null,
+      "factory_latency_ms": 26496,
+      "factory_model_config_hash": "59a1f51f0d49131efdfd320485c1d95a5494ba0b06f7634c82358fc022e7f934",
+      "factory_prompt_version": "factory-v4",
+      "factory_retry_count": 0,
+      "factory_token_usage": {
+        "input": 2019,
+        "output": 1443
+      },
+      "fallback_used": false,
+      "fill_ratio": 0.28,
+      "generation": 13,
+      "mutation": {
+        "operation": "SET",
+        "target_path": "decision.procedure",
+        "value": "analyze_then_choose"
+      },
+      "opportunity": {
+        "action_outcomes": [
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 0,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.28,
+            "filled_quantity": 28,
+            "offset_ticks": 1,
+            "reward": 172000.0,
+            "time_to_first_fill": 5.632871114001318,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.79,
+            "filled_quantity": 79,
+            "offset_ticks": 2,
+            "reward": 511400.0,
+            "time_to_first_fill": 6.232321987001342,
+            "time_to_full_fill": null
+          }
+        ],
+        "available": true,
+        "best_action_reward": 511400.0,
+        "best_available_fill_ratio": 0.79,
+        "best_available_reward": 511400.0,
+        "captured": true,
+        "chosen_action_reward": 172000.0,
+        "constant_outcome": false,
+        "decision_regret": 339400.0,
+        "fillable_offsets": [
+          1,
+          2
+        ],
+        "outcome_differentiated": true,
+        "selected_action_fillable": true,
+        "unavoidable_no_fill": false
+      },
+      "parse_success": true,
+      "reward": 172000.0,
+      "selected_action": 1,
+      "signed_markout": 6400.0,
+      "spread_capture": 900.0,
+      "successor_harness_id": "97ab192d947a4b4316cb295f",
+      "successor_measured": false,
+      "time_to_fill": null,
+      "time_to_first_fill": 5.632871114001318,
+      "transition_status": "PROMOTED",
+      "unfilled_penalty": 7200.0,
+      "validation": {
+        "causality": "passed",
+        "compile": "passed",
+        "factory_output": "passed",
+        "interface": "passed",
+        "offline_smoke_test": "passed",
+        "schema_semantics": "passed",
+        "spec_diff": {
+          "decision.procedure": {
+            "from": "compare_all_actions",
+            "to": "analyze_then_choose"
+          }
+        }
+      }
+    },
+    {
+      "active_harness_id": "97ab192d947a4b4316cb295f",
+      "active_harness_version": 12,
+      "candidate_harness_id": "bd79eba6eb35dbd142e57537",
+      "decision_agent_error": null,
+      "decision_agent_latency_ms": 86513,
+      "decision_agent_token_usage": {
+        "input": 594,
+        "output": 5440
+      },
+      "decision_reason": "operational_validation_passed",
+      "diagnosis": {
+        "affected_metric": "fill_ratio",
+        "confidence": 0.7,
+        "diagnosis_id": "diagnosis-3bccb9314ff73271",
+        "evidence_refs": [
+          "evidence-g14:aggregate:fill_ratio",
+          "evidence-g14:aggregate:unfilled_penalty"
+        ],
+        "suspected_cause": "The selected action used offset_ticks 2, and the episode produced zero fills with the full unfilled penalty. The passive offset 2 appears to be too far from the touch to execute in this environment.",
+        "suspected_harness_component": "constraints.allowed_offsets"
+      },
+      "episode_id": "e9c312dace2e0f422cf0c112",
+      "episode_timestamp": 46804.522350437,
+      "evidence": {
+        "aggregate_metrics": {
+          "constraint_fallback_rate": 0.0,
+          "execution_value": 0.0,
+          "fees": 0.0,
+          "fill_ratio": 0.0,
+          "reward": -10000.0,
+          "signed_markout": 0.0,
+          "spread_capture": 0.0,
+          "unfilled_penalty": 10000.0
+        },
+        "evidence_id": "evidence-g14",
+        "experience_ids": [
+          "d138bf4f414d13529af13d07"
+        ],
+        "metric_slices": {
+          "AAPL": {
+            "constraint_fallback_rate": 0.0,
+            "execution_value": 0.0,
+            "fees": 0.0,
+            "fill_ratio": 0.0,
+            "reward": -10000.0,
+            "signed_markout": 0.0,
+            "spread_capture": 0.0,
+            "unfilled_penalty": 10000.0
+          }
+        },
+        "sample_count": 1
+      },
+      "factory_backend": "llm",
+      "factory_decision": "PROMOTED",
+      "factory_error": null,
+      "factory_latency_ms": 22031,
+      "factory_model_config_hash": "59a1f51f0d49131efdfd320485c1d95a5494ba0b06f7634c82358fc022e7f934",
+      "factory_prompt_version": "factory-v4",
+      "factory_retry_count": 0,
+      "factory_token_usage": {
+        "input": 2008,
+        "output": 1165
+      },
+      "fallback_used": false,
+      "fill_ratio": 0.0,
+      "generation": 14,
+      "mutation": {
+        "operation": "REMOVE",
+        "target_path": "constraints.allowed_offsets",
+        "value": 2
+      },
+      "opportunity": {
+        "action_outcomes": [
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 0,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 1,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 2,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          }
+        ],
+        "available": false,
+        "best_action_reward": -10000.0,
+        "best_available_fill_ratio": 0.0,
+        "best_available_reward": -10000.0,
+        "captured": null,
+        "chosen_action_reward": -10000.0,
+        "constant_outcome": true,
+        "decision_regret": 0.0,
+        "fillable_offsets": [],
+        "outcome_differentiated": false,
+        "selected_action_fillable": false,
+        "unavoidable_no_fill": true
+      },
+      "parse_success": true,
+      "reward": -10000.0,
+      "selected_action": 2,
+      "signed_markout": 0.0,
+      "spread_capture": 0.0,
+      "successor_harness_id": "bd79eba6eb35dbd142e57537",
+      "successor_measured": false,
+      "time_to_fill": null,
+      "time_to_first_fill": null,
+      "transition_status": "PROMOTED",
+      "unfilled_penalty": 10000.0,
+      "validation": {
+        "causality": "passed",
+        "compile": "passed",
+        "factory_output": "passed",
+        "interface": "passed",
+        "offline_smoke_test": "passed",
+        "schema_semantics": "passed",
+        "spec_diff": {
+          "constraints.allowed_offsets": {
+            "from": [
+              1,
+              2,
+              0
+            ],
+            "to": [
+              1,
+              0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "active_harness_id": "bd79eba6eb35dbd142e57537",
+      "active_harness_version": 13,
+      "candidate_harness_id": "3290ef337a1232e6aa36e0a5",
+      "decision_agent_error": null,
+      "decision_agent_latency_ms": 45367,
+      "decision_agent_token_usage": {
+        "input": 583,
+        "output": 2322
+      },
+      "decision_reason": "operational_validation_passed",
+      "diagnosis": {
+        "affected_metric": "fill_ratio",
+        "confidence": 0.6,
+        "diagnosis_id": "diagnosis-ed2f219abab7472a",
+        "evidence_refs": [
+          "evidence-g15:aggregate:fill_ratio",
+          "evidence-g15:aggregate:unfilled_penalty"
+        ],
+        "suspected_cause": "The model selected offset 0 (passive) and received no fills, suggesting it lacks sufficient order book depth information to choose a more aggressive offset. Current features only include top-of-book imbalance and microprice, not deeper multi-level imbalance.",
+        "suspected_harness_component": "augmentation.features"
+      },
+      "episode_id": "a14971237cb3cbec2ec08cf7",
+      "episode_timestamp": 47705.278743455,
+      "evidence": {
+        "aggregate_metrics": {
+          "constraint_fallback_rate": 0.0,
+          "execution_value": 0.0,
+          "fees": 0.0,
+          "fill_ratio": 0.0,
+          "reward": -10000.0,
+          "signed_markout": 0.0,
+          "spread_capture": 0.0,
+          "unfilled_penalty": 10000.0
+        },
+        "evidence_id": "evidence-g15",
+        "experience_ids": [
+          "b3ce718881fbd06653fb2f87"
+        ],
+        "metric_slices": {
+          "AAPL": {
+            "constraint_fallback_rate": 0.0,
+            "execution_value": 0.0,
+            "fees": 0.0,
+            "fill_ratio": 0.0,
+            "reward": -10000.0,
+            "signed_markout": 0.0,
+            "spread_capture": 0.0,
+            "unfilled_penalty": 10000.0
+          }
+        },
+        "sample_count": 1
+      },
+      "factory_backend": "llm",
+      "factory_decision": "PROMOTED",
+      "factory_error": null,
+      "factory_latency_ms": 33596,
+      "factory_model_config_hash": "59a1f51f0d49131efdfd320485c1d95a5494ba0b06f7634c82358fc022e7f934",
+      "factory_prompt_version": "factory-v4",
+      "factory_retry_count": 0,
+      "factory_token_usage": {
+        "input": 2063,
+        "output": 2190
+      },
+      "fallback_used": false,
+      "fill_ratio": 0.0,
+      "generation": 15,
+      "mutation": {
+        "operation": "ADD",
+        "target_path": "augmentation.features",
+        "value": "multilevel_imbalance"
+      },
+      "opportunity": {
+        "action_outcomes": [
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 0,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 1,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 2,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          }
+        ],
+        "available": false,
+        "best_action_reward": -10000.0,
+        "best_available_fill_ratio": 0.0,
+        "best_available_reward": -10000.0,
+        "captured": null,
+        "chosen_action_reward": -10000.0,
+        "constant_outcome": true,
+        "decision_regret": 0.0,
+        "fillable_offsets": [],
+        "outcome_differentiated": false,
+        "selected_action_fillable": false,
+        "unavoidable_no_fill": true
+      },
+      "parse_success": true,
+      "reward": -10000.0,
+      "selected_action": 0,
+      "signed_markout": 0.0,
+      "spread_capture": 0.0,
+      "successor_harness_id": "3290ef337a1232e6aa36e0a5",
+      "successor_measured": false,
+      "time_to_fill": null,
+      "time_to_first_fill": null,
+      "transition_status": "PROMOTED",
+      "unfilled_penalty": 10000.0,
+      "validation": {
+        "causality": "passed",
+        "compile": "passed",
+        "factory_output": "passed",
+        "interface": "passed",
+        "offline_smoke_test": "passed",
+        "schema_semantics": "passed",
+        "spec_diff": {
+          "augmentation.features": {
+            "from": [
+              "spread_ticks",
+              "level1_imbalance",
+              "recent_trade_imbalance",
+              "microprice",
+              "short_term_volatility"
+            ],
+            "to": [
+              "spread_ticks",
+              "level1_imbalance",
+              "recent_trade_imbalance",
+              "microprice",
+              "short_term_volatility",
+              "multilevel_imbalance"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "active_harness_id": "3290ef337a1232e6aa36e0a5",
+      "active_harness_version": 14,
+      "candidate_harness_id": "b4d9350e5537b61e82ec991d",
+      "decision_agent_error": null,
+      "decision_agent_latency_ms": 66351,
+      "decision_agent_token_usage": {
+        "input": 606,
+        "output": 4390
+      },
+      "decision_reason": "operational_validation_passed",
+      "diagnosis": {
+        "affected_metric": "fill_ratio",
+        "confidence": 0.6,
+        "diagnosis_id": "diagnosis-ba62e9f529feecda",
+        "evidence_refs": [
+          "evidence-g16:aggregate:fill_ratio",
+          "evidence-g16:aggregate:unfilled_penalty"
+        ],
+        "suspected_cause": "Event lookback of 10 may be too short for the decision procedure to estimate fill probability, leading to selection of an unfillable offset and zero fills.",
+        "suspected_harness_component": "observation.event_lookback"
+      },
+      "episode_id": "d3b76690967413b7005bb82a",
+      "episode_timestamp": 48605.300754721,
+      "evidence": {
+        "aggregate_metrics": {
+          "constraint_fallback_rate": 0.0,
+          "execution_value": 0.0,
+          "fees": 0.0,
+          "fill_ratio": 0.0,
+          "reward": -10000.0,
+          "signed_markout": 0.0,
+          "spread_capture": 0.0,
+          "unfilled_penalty": 10000.0
+        },
+        "evidence_id": "evidence-g16",
+        "experience_ids": [
+          "b4fa15d83ae376a38b33d7b0"
+        ],
+        "metric_slices": {
+          "AAPL": {
+            "constraint_fallback_rate": 0.0,
+            "execution_value": 0.0,
+            "fees": 0.0,
+            "fill_ratio": 0.0,
+            "reward": -10000.0,
+            "signed_markout": 0.0,
+            "spread_capture": 0.0,
+            "unfilled_penalty": 10000.0
+          }
+        },
+        "sample_count": 1
+      },
+      "factory_backend": "llm",
+      "factory_decision": "PROMOTED",
+      "factory_error": null,
+      "factory_latency_ms": 27522,
+      "factory_model_config_hash": "59a1f51f0d49131efdfd320485c1d95a5494ba0b06f7634c82358fc022e7f934",
+      "factory_prompt_version": "factory-v4",
+      "factory_retry_count": 0,
+      "factory_token_usage": {
+        "input": 2081,
+        "output": 2333
+      },
+      "fallback_used": false,
+      "fill_ratio": 0.0,
+      "generation": 16,
+      "mutation": {
+        "operation": "SET",
+        "target_path": "observation.event_lookback",
+        "value": 25
+      },
+      "opportunity": {
+        "action_outcomes": [
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 0,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 1,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 2,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          }
+        ],
+        "available": false,
+        "best_action_reward": -10000.0,
+        "best_available_fill_ratio": 0.0,
+        "best_available_reward": -10000.0,
+        "captured": null,
+        "chosen_action_reward": -10000.0,
+        "constant_outcome": true,
+        "decision_regret": 0.0,
+        "fillable_offsets": [],
+        "outcome_differentiated": false,
+        "selected_action_fillable": false,
+        "unavoidable_no_fill": true
+      },
+      "parse_success": true,
+      "reward": -10000.0,
+      "selected_action": 0,
+      "signed_markout": 0.0,
+      "spread_capture": 0.0,
+      "successor_harness_id": "b4d9350e5537b61e82ec991d",
+      "successor_measured": false,
+      "time_to_fill": null,
+      "time_to_first_fill": null,
+      "transition_status": "PROMOTED",
+      "unfilled_penalty": 10000.0,
+      "validation": {
+        "causality": "passed",
+        "compile": "passed",
+        "factory_output": "passed",
+        "interface": "passed",
+        "offline_smoke_test": "passed",
+        "schema_semantics": "passed",
+        "spec_diff": {
+          "observation.event_lookback": {
+            "from": 10,
+            "to": 25
+          }
+        }
+      }
+    },
+    {
+      "active_harness_id": "b4d9350e5537b61e82ec991d",
+      "active_harness_version": 15,
+      "candidate_harness_id": "51524b30869e320dddc73690",
+      "decision_agent_error": null,
+      "decision_agent_latency_ms": 37306,
+      "decision_agent_token_usage": {
+        "input": 1127,
+        "output": 2129
+      },
+      "decision_reason": "operational_validation_passed",
+      "diagnosis": {
+        "affected_metric": "fill_ratio",
+        "confidence": 0.6,
+        "diagnosis_id": "diagnosis-a1ed89aace332c6f",
+        "evidence_refs": [
+          "evidence-g17:aggregate:fill_ratio",
+          "evidence-g17:aggregate:unfilled_penalty"
+        ],
+        "suspected_cause": "The analyze_then_choose procedure selected offset_ticks=1, which resulted in no fills; it does not compare all allowed offsets to choose a fill-guaranteeing action.",
+        "suspected_harness_component": "decision.procedure"
+      },
+      "episode_id": "8c97b6c116c38c7ec50a0bbd",
+      "episode_timestamp": 49505.317674596,
+      "evidence": {
+        "aggregate_metrics": {
+          "constraint_fallback_rate": 0.0,
+          "execution_value": 0.0,
+          "fees": 0.0,
+          "fill_ratio": 0.0,
+          "reward": -10000.0,
+          "signed_markout": 0.0,
+          "spread_capture": 0.0,
+          "unfilled_penalty": 10000.0
+        },
+        "evidence_id": "evidence-g17",
+        "experience_ids": [
+          "042998228a8ab350dfc72da3"
+        ],
+        "metric_slices": {
+          "AAPL": {
+            "constraint_fallback_rate": 0.0,
+            "execution_value": 0.0,
+            "fees": 0.0,
+            "fill_ratio": 0.0,
+            "reward": -10000.0,
+            "signed_markout": 0.0,
+            "spread_capture": 0.0,
+            "unfilled_penalty": 10000.0
+          }
+        },
+        "sample_count": 1
+      },
+      "factory_backend": "llm",
+      "factory_decision": "PROMOTED",
+      "factory_error": null,
+      "factory_latency_ms": 45937,
+      "factory_model_config_hash": "59a1f51f0d49131efdfd320485c1d95a5494ba0b06f7634c82358fc022e7f934",
+      "factory_prompt_version": "factory-v4",
+      "factory_retry_count": 0,
+      "factory_token_usage": {
+        "input": 2074,
+        "output": 4348
+      },
+      "fallback_used": false,
+      "fill_ratio": 0.0,
+      "generation": 17,
+      "mutation": {
+        "operation": "SET",
+        "target_path": "decision.procedure",
+        "value": "compare_all_actions"
+      },
+      "opportunity": {
+        "action_outcomes": [
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 0,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 1,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 2,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          }
+        ],
+        "available": false,
+        "best_action_reward": -10000.0,
+        "best_available_fill_ratio": 0.0,
+        "best_available_reward": -10000.0,
+        "captured": null,
+        "chosen_action_reward": -10000.0,
+        "constant_outcome": true,
+        "decision_regret": 0.0,
+        "fillable_offsets": [],
+        "outcome_differentiated": false,
+        "selected_action_fillable": false,
+        "unavoidable_no_fill": true
+      },
+      "parse_success": true,
+      "reward": -10000.0,
+      "selected_action": 1,
+      "signed_markout": 0.0,
+      "spread_capture": 0.0,
+      "successor_harness_id": "51524b30869e320dddc73690",
+      "successor_measured": false,
+      "time_to_fill": null,
+      "time_to_first_fill": null,
+      "transition_status": "PROMOTED",
+      "unfilled_penalty": 10000.0,
+      "validation": {
+        "causality": "passed",
+        "compile": "passed",
+        "factory_output": "passed",
+        "interface": "passed",
+        "offline_smoke_test": "passed",
+        "schema_semantics": "passed",
+        "spec_diff": {
+          "decision.procedure": {
+            "from": "analyze_then_choose",
+            "to": "compare_all_actions"
+          }
+        }
+      }
+    },
+    {
+      "active_harness_id": "51524b30869e320dddc73690",
+      "active_harness_version": 16,
+      "candidate_harness_id": "4f16b23f627ac5a99c370e56",
+      "decision_agent_error": null,
+      "decision_agent_latency_ms": 32967,
+      "decision_agent_token_usage": {
+        "input": 1140,
+        "output": 2035
+      },
+      "decision_reason": "operational_validation_passed",
+      "diagnosis": {
+        "affected_metric": "fill_ratio",
+        "confidence": 0.6,
+        "diagnosis_id": "diagnosis-2eb3ba3c3d66dfef",
+        "evidence_refs": [
+          "evidence-g18:aggregate:fill_ratio",
+          "evidence-g18:aggregate:unfilled_penalty"
+        ],
+        "suspected_cause": "The agent selected offset 0, which resulted in zero fills and a large unfilled penalty. Offset 0 may be a market order that does not get filled in this environment, or it may be otherwise suboptimal.",
+        "suspected_harness_component": "constraints.allowed_offsets"
+      },
+      "episode_id": "10415ef846b5889f68af62d1",
+      "episode_timestamp": 50405.669044365,
+      "evidence": {
+        "aggregate_metrics": {
+          "constraint_fallback_rate": 0.0,
+          "execution_value": 0.0,
+          "fees": 0.0,
+          "fill_ratio": 0.0,
+          "reward": -10000.0,
+          "signed_markout": 0.0,
+          "spread_capture": 0.0,
+          "unfilled_penalty": 10000.0
+        },
+        "evidence_id": "evidence-g18",
+        "experience_ids": [
+          "f11cd797955617dadfe86f86"
+        ],
+        "metric_slices": {
+          "AAPL": {
+            "constraint_fallback_rate": 0.0,
+            "execution_value": 0.0,
+            "fees": 0.0,
+            "fill_ratio": 0.0,
+            "reward": -10000.0,
+            "signed_markout": 0.0,
+            "spread_capture": 0.0,
+            "unfilled_penalty": 10000.0
+          }
+        },
+        "sample_count": 1
+      },
+      "factory_backend": "llm",
+      "factory_decision": "PROMOTED",
+      "factory_error": null,
+      "factory_latency_ms": 41780,
+      "factory_model_config_hash": "59a1f51f0d49131efdfd320485c1d95a5494ba0b06f7634c82358fc022e7f934",
+      "factory_prompt_version": "factory-v4",
+      "factory_retry_count": 0,
+      "factory_token_usage": {
+        "input": 2069,
+        "output": 3729
+      },
+      "fallback_used": false,
+      "fill_ratio": 0.0,
+      "generation": 18,
+      "mutation": {
+        "operation": "REMOVE",
+        "target_path": "constraints.allowed_offsets",
+        "value": 0
+      },
+      "opportunity": {
+        "action_outcomes": [
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 0,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 1,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 2,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          }
+        ],
+        "available": false,
+        "best_action_reward": -10000.0,
+        "best_available_fill_ratio": 0.0,
+        "best_available_reward": -10000.0,
+        "captured": null,
+        "chosen_action_reward": -10000.0,
+        "constant_outcome": true,
+        "decision_regret": 0.0,
+        "fillable_offsets": [],
+        "outcome_differentiated": false,
+        "selected_action_fillable": false,
+        "unavoidable_no_fill": true
+      },
+      "parse_success": true,
+      "reward": -10000.0,
+      "selected_action": 0,
+      "signed_markout": 0.0,
+      "spread_capture": 0.0,
+      "successor_harness_id": "4f16b23f627ac5a99c370e56",
+      "successor_measured": false,
+      "time_to_fill": null,
+      "time_to_first_fill": null,
+      "transition_status": "PROMOTED",
+      "unfilled_penalty": 10000.0,
+      "validation": {
+        "causality": "passed",
+        "compile": "passed",
+        "factory_output": "passed",
+        "interface": "passed",
+        "offline_smoke_test": "passed",
+        "schema_semantics": "passed",
+        "spec_diff": {
+          "constraints.allowed_offsets": {
+            "from": [
+              1,
+              0
+            ],
+            "to": [
+              1
+            ]
+          }
+        }
+      }
+    },
+    {
+      "active_harness_id": "4f16b23f627ac5a99c370e56",
+      "active_harness_version": 17,
+      "candidate_harness_id": "51524b30869e320dddc73690",
+      "decision_agent_error": null,
+      "decision_agent_latency_ms": 3163,
+      "decision_agent_token_usage": {
+        "input": 1131,
+        "output": 185
+      },
+      "decision_reason": "operational_validation_passed",
+      "diagnosis": {
+        "affected_metric": "fill_ratio",
+        "confidence": 0.7,
+        "diagnosis_id": "diagnosis-60ce7383e14ec440",
+        "evidence_refs": [
+          "evidence-g19:aggregate:fill_ratio",
+          "evidence-g19:aggregate:unfilled_penalty"
+        ],
+        "suspected_cause": "The only allowed offset is 1 tick, which appears too passive for the current market conditions, resulting in zero fills and a full unfilled penalty.",
+        "suspected_harness_component": "constraints.allowed_offsets"
+      },
+      "episode_id": "319b7d18a71a7ad5e228834f",
+      "episode_timestamp": 51305.696152505,
+      "evidence": {
+        "aggregate_metrics": {
+          "constraint_fallback_rate": 0.0,
+          "execution_value": 0.0,
+          "fees": 0.0,
+          "fill_ratio": 0.0,
+          "reward": -10000.0,
+          "signed_markout": 0.0,
+          "spread_capture": 0.0,
+          "unfilled_penalty": 10000.0
+        },
+        "evidence_id": "evidence-g19",
+        "experience_ids": [
+          "d6f3a1c97a4d4c7bac2ddb9f"
+        ],
+        "metric_slices": {
+          "AAPL": {
+            "constraint_fallback_rate": 0.0,
+            "execution_value": 0.0,
+            "fees": 0.0,
+            "fill_ratio": 0.0,
+            "reward": -10000.0,
+            "signed_markout": 0.0,
+            "spread_capture": 0.0,
+            "unfilled_penalty": 10000.0
+          }
+        },
+        "sample_count": 1
+      },
+      "factory_backend": "llm",
+      "factory_decision": "PROMOTED",
+      "factory_error": null,
+      "factory_latency_ms": 13346,
+      "factory_model_config_hash": "59a1f51f0d49131efdfd320485c1d95a5494ba0b06f7634c82358fc022e7f934",
+      "factory_prompt_version": "factory-v4",
+      "factory_retry_count": 0,
+      "factory_token_usage": {
+        "input": 2080,
+        "output": 1117
+      },
+      "fallback_used": false,
+      "fill_ratio": 0.0,
+      "generation": 19,
+      "mutation": {
+        "operation": "ADD",
+        "target_path": "constraints.allowed_offsets",
+        "value": 0
+      },
+      "opportunity": {
+        "action_outcomes": [
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 0,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 1,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 2,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          }
+        ],
+        "available": false,
+        "best_action_reward": -10000.0,
+        "best_available_fill_ratio": 0.0,
+        "best_available_reward": -10000.0,
+        "captured": null,
+        "chosen_action_reward": -10000.0,
+        "constant_outcome": true,
+        "decision_regret": 0.0,
+        "fillable_offsets": [],
+        "outcome_differentiated": false,
+        "selected_action_fillable": false,
+        "unavoidable_no_fill": true
+      },
+      "parse_success": true,
+      "reward": -10000.0,
+      "selected_action": 1,
+      "signed_markout": 0.0,
+      "spread_capture": 0.0,
+      "successor_harness_id": "51524b30869e320dddc73690",
+      "successor_measured": false,
+      "time_to_fill": null,
+      "time_to_first_fill": null,
+      "transition_status": "PROMOTED",
+      "unfilled_penalty": 10000.0,
+      "validation": {
+        "causality": "passed",
+        "compile": "passed",
+        "factory_output": "passed",
+        "interface": "passed",
+        "offline_smoke_test": "passed",
+        "schema_semantics": "passed",
+        "spec_diff": {
+          "constraints.allowed_offsets": {
+            "from": [
+              1
+            ],
+            "to": [
+              1,
+              0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "active_harness_id": "51524b30869e320dddc73690",
+      "active_harness_version": 18,
+      "candidate_harness_id": "0e905bb6a49cd6aaa9cfbfd7",
+      "decision_agent_error": null,
+      "decision_agent_latency_ms": 29979,
+      "decision_agent_token_usage": {
+        "input": 1135,
+        "output": 1650
+      },
+      "decision_reason": "operational_validation_passed",
+      "diagnosis": {
+        "affected_metric": "fill_ratio",
+        "confidence": 0.6,
+        "diagnosis_id": "diagnosis-c0e1151e90453e56",
+        "evidence_refs": [
+          "evidence-g20:aggregate:fill_ratio",
+          "evidence-g20:aggregate:unfilled_penalty"
+        ],
+        "suspected_cause": "The agent selected offset 1 but achieved zero fills, indicating it lacks sufficient market microstructure information to choose a fillable offset. The current feature set omits cancel_rate, which could provide critical order-flow cancellation pressure signals.",
+        "suspected_harness_component": "augmentation.features"
+      },
+      "episode_id": "0cd21923f4042e361d580f7c",
+      "episode_timestamp": 52206.048581506,
+      "evidence": {
+        "aggregate_metrics": {
+          "constraint_fallback_rate": 0.0,
+          "execution_value": 0.0,
+          "fees": 0.0,
+          "fill_ratio": 0.0,
+          "reward": -10000.0,
+          "signed_markout": 0.0,
+          "spread_capture": 0.0,
+          "unfilled_penalty": 10000.0
+        },
+        "evidence_id": "evidence-g20",
+        "experience_ids": [
+          "88d976f7a1db3fcb69e3418d"
+        ],
+        "metric_slices": {
+          "AAPL": {
+            "constraint_fallback_rate": 0.0,
+            "execution_value": 0.0,
+            "fees": 0.0,
+            "fill_ratio": 0.0,
+            "reward": -10000.0,
+            "signed_markout": 0.0,
+            "spread_capture": 0.0,
+            "unfilled_penalty": 10000.0
+          }
+        },
+        "sample_count": 1
+      },
+      "factory_backend": "llm",
+      "factory_decision": "PROMOTED",
+      "factory_error": null,
+      "factory_latency_ms": 35354,
+      "factory_model_config_hash": "59a1f51f0d49131efdfd320485c1d95a5494ba0b06f7634c82358fc022e7f934",
+      "factory_prompt_version": "factory-v4",
+      "factory_retry_count": 0,
+      "factory_token_usage": {
+        "input": 2076,
+        "output": 1798
+      },
+      "fallback_used": false,
+      "fill_ratio": 0.0,
+      "generation": 20,
+      "mutation": {
+        "operation": "ADD",
+        "target_path": "augmentation.features",
+        "value": "cancel_rate"
+      },
+      "opportunity": {
+        "action_outcomes": [
+          {
+            "fill_ratio": 0.93,
+            "filled_quantity": 93,
+            "offset_ticks": 0,
+            "reward": -5350.0,
+            "time_to_first_fill": 17.445402069999545,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 1,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 2,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          }
+        ],
+        "available": true,
+        "best_action_reward": -5350.0,
+        "best_available_fill_ratio": 0.93,
+        "best_available_reward": -5350.0,
+        "captured": false,
+        "chosen_action_reward": -10000.0,
+        "constant_outcome": false,
+        "decision_regret": 4650.0,
+        "fillable_offsets": [
+          0
+        ],
+        "outcome_differentiated": true,
+        "selected_action_fillable": false,
+        "unavoidable_no_fill": false
+      },
+      "parse_success": true,
+      "reward": -10000.0,
+      "selected_action": 1,
+      "signed_markout": 0.0,
+      "spread_capture": 0.0,
+      "successor_harness_id": "0e905bb6a49cd6aaa9cfbfd7",
+      "successor_measured": false,
+      "time_to_fill": null,
+      "time_to_first_fill": null,
+      "transition_status": "PROMOTED",
+      "unfilled_penalty": 10000.0,
+      "validation": {
+        "causality": "passed",
+        "compile": "passed",
+        "factory_output": "passed",
+        "interface": "passed",
+        "offline_smoke_test": "passed",
+        "schema_semantics": "passed",
+        "spec_diff": {
+          "augmentation.features": {
+            "from": [
+              "spread_ticks",
+              "level1_imbalance",
+              "recent_trade_imbalance",
+              "microprice",
+              "short_term_volatility",
+              "multilevel_imbalance"
+            ],
+            "to": [
+              "spread_ticks",
+              "level1_imbalance",
+              "recent_trade_imbalance",
+              "microprice",
+              "short_term_volatility",
+              "multilevel_imbalance",
+              "cancel_rate"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "active_harness_id": "0e905bb6a49cd6aaa9cfbfd7",
+      "active_harness_version": 19,
+      "candidate_harness_id": "5006e1766f69014732dc0aaa",
+      "decision_agent_error": null,
+      "decision_agent_latency_ms": 66807,
+      "decision_agent_token_usage": {
+        "input": 1140,
+        "output": 4545
+      },
+      "decision_reason": "operational_validation_passed",
+      "diagnosis": {
+        "affected_metric": "fill_ratio",
+        "confidence": 0.6,
+        "diagnosis_id": "diagnosis-89a61bedb01b2feb",
+        "evidence_refs": [
+          "evidence-g21:aggregate:fill_ratio",
+          "evidence-g21:aggregate:unfilled_penalty"
+        ],
+        "suspected_cause": "The allowed offset 0 was selected but resulted in no fills, suggesting that offset 0 is not executable in the current market conditions.",
+        "suspected_harness_component": "constraints.allowed_offsets"
+      },
+      "episode_id": "ed5ec08864cdaa0468c4df8b",
+      "episode_timestamp": 53107.57076423,
+      "evidence": {
+        "aggregate_metrics": {
+          "constraint_fallback_rate": 0.0,
+          "execution_value": 0.0,
+          "fees": 0.0,
+          "fill_ratio": 0.0,
+          "reward": -10000.0,
+          "signed_markout": 0.0,
+          "spread_capture": 0.0,
+          "unfilled_penalty": 10000.0
+        },
+        "evidence_id": "evidence-g21",
+        "experience_ids": [
+          "3f37a8649b81a24d629f1c9d"
+        ],
+        "metric_slices": {
+          "AAPL": {
+            "constraint_fallback_rate": 0.0,
+            "execution_value": 0.0,
+            "fees": 0.0,
+            "fill_ratio": 0.0,
+            "reward": -10000.0,
+            "signed_markout": 0.0,
+            "spread_capture": 0.0,
+            "unfilled_penalty": 10000.0
+          }
+        },
+        "sample_count": 1
+      },
+      "factory_backend": "llm",
+      "factory_decision": "PROMOTED",
+      "factory_error": null,
+      "factory_latency_ms": 41949,
+      "factory_model_config_hash": "59a1f51f0d49131efdfd320485c1d95a5494ba0b06f7634c82358fc022e7f934",
+      "factory_prompt_version": "factory-v4",
+      "factory_retry_count": 0,
+      "factory_token_usage": {
+        "input": 2140,
+        "output": 2353
+      },
+      "fallback_used": false,
+      "fill_ratio": 0.0,
+      "generation": 21,
+      "mutation": {
+        "operation": "REMOVE",
+        "target_path": "constraints.allowed_offsets",
+        "value": 0
+      },
+      "opportunity": {
+        "action_outcomes": [
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 0,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.92,
+            "filled_quantity": 92,
+            "offset_ticks": 1,
+            "reward": -800.0,
+            "time_to_first_fill": 13.99426145900361,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 2,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          }
+        ],
+        "available": true,
+        "best_action_reward": -800.0,
+        "best_available_fill_ratio": 0.92,
+        "best_available_reward": -800.0,
+        "captured": false,
+        "chosen_action_reward": -10000.0,
+        "constant_outcome": false,
+        "decision_regret": 9200.0,
+        "fillable_offsets": [
+          1
+        ],
+        "outcome_differentiated": true,
+        "selected_action_fillable": false,
+        "unavoidable_no_fill": false
+      },
+      "parse_success": true,
+      "reward": -10000.0,
+      "selected_action": 0,
+      "signed_markout": 0.0,
+      "spread_capture": 0.0,
+      "successor_harness_id": "5006e1766f69014732dc0aaa",
+      "successor_measured": false,
+      "time_to_fill": null,
+      "time_to_first_fill": null,
+      "transition_status": "PROMOTED",
+      "unfilled_penalty": 10000.0,
+      "validation": {
+        "causality": "passed",
+        "compile": "passed",
+        "factory_output": "passed",
+        "interface": "passed",
+        "offline_smoke_test": "passed",
+        "schema_semantics": "passed",
+        "spec_diff": {
+          "constraints.allowed_offsets": {
+            "from": [
+              1,
+              0
+            ],
+            "to": [
+              1
+            ]
+          }
+        }
+      }
+    },
+    {
+      "active_harness_id": "5006e1766f69014732dc0aaa",
+      "active_harness_version": 20,
+      "candidate_harness_id": null,
+      "decision_agent_error": null,
+      "decision_agent_latency_ms": 32897,
+      "decision_agent_token_usage": {
+        "input": 1149,
+        "output": 2499
+      },
+      "decision_reason": "ValueError: ValueError: confidence must be between zero and one",
+      "diagnosis": null,
+      "episode_id": "a1c591c1d41ff972d7b66895",
+      "episode_timestamp": 54007.687943036,
+      "evidence": {
+        "aggregate_metrics": {
+          "constraint_fallback_rate": 0.0,
+          "execution_value": 0.0,
+          "fees": 0.0,
+          "fill_ratio": 0.0,
+          "reward": -10000.0,
+          "signed_markout": 0.0,
+          "spread_capture": 0.0,
+          "unfilled_penalty": 10000.0
+        },
+        "evidence_id": "evidence-g22",
+        "experience_ids": [
+          "f5a93fdaae1402cce7dd6474"
+        ],
+        "metric_slices": {
+          "AAPL": {
+            "constraint_fallback_rate": 0.0,
+            "execution_value": 0.0,
+            "fees": 0.0,
+            "fill_ratio": 0.0,
+            "reward": -10000.0,
+            "signed_markout": 0.0,
+            "spread_capture": 0.0,
+            "unfilled_penalty": 10000.0
+          }
+        },
+        "sample_count": 1
+      },
+      "factory_backend": "llm",
+      "factory_decision": "INVALID",
+      "factory_error": "ValueError: confidence must be between zero and one",
+      "factory_latency_ms": 37748,
+      "factory_model_config_hash": "59a1f51f0d49131efdfd320485c1d95a5494ba0b06f7634c82358fc022e7f934",
+      "factory_prompt_version": "factory-v4",
+      "factory_retry_count": 0,
+      "factory_token_usage": {
+        "input": 2134,
+        "output": 3191
+      },
+      "fallback_used": false,
+      "fill_ratio": 0.0,
+      "generation": 22,
+      "mutation": null,
+      "opportunity": {
+        "action_outcomes": [
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 0,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 1,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 2,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          }
+        ],
+        "available": false,
+        "best_action_reward": -10000.0,
+        "best_available_fill_ratio": 0.0,
+        "best_available_reward": -10000.0,
+        "captured": null,
+        "chosen_action_reward": -10000.0,
+        "constant_outcome": true,
+        "decision_regret": 0.0,
+        "fillable_offsets": [],
+        "outcome_differentiated": false,
+        "selected_action_fillable": false,
+        "unavoidable_no_fill": true
+      },
+      "parse_success": true,
+      "reward": -10000.0,
+      "selected_action": 1,
+      "signed_markout": 0.0,
+      "spread_capture": 0.0,
+      "successor_harness_id": "5006e1766f69014732dc0aaa",
+      "successor_measured": true,
+      "time_to_fill": null,
+      "time_to_first_fill": null,
+      "transition_status": "INVALID",
+      "unfilled_penalty": 10000.0,
+      "validation": {
+        "causality": "not_run",
+        "compile": "not_run",
+        "error": "ValueError: ValueError: confidence must be between zero and one",
+        "factory_output": "failed",
+        "interface": "not_run",
+        "offline_smoke_test": "not_run",
+        "schema_semantics": "not_run"
+      }
+    },
+    {
+      "active_harness_id": "5006e1766f69014732dc0aaa",
+      "active_harness_version": 20,
+      "candidate_harness_id": "0e905bb6a49cd6aaa9cfbfd7",
+      "decision_agent_error": null,
+      "decision_agent_latency_ms": 16708,
+      "decision_agent_token_usage": {
+        "input": 1149,
+        "output": 1256
+      },
+      "decision_reason": "operational_validation_passed",
+      "diagnosis": {
+        "affected_metric": "fill_ratio",
+        "confidence": 0.7,
+        "diagnosis_id": "diagnosis-b94d542e7aaed366",
+        "evidence_refs": [
+          "evidence-g23:aggregate:fill_ratio",
+          "evidence-g23:aggregate:unfilled_penalty"
+        ],
+        "suspected_cause": "Only offset 1 is allowed, which is a passive quote that never crosses the spread, resulting in zero fills and maximum unfilled penalty.",
+        "suspected_harness_component": "constraints.allowed_offsets"
+      },
+      "episode_id": "0947dc3e376912fcbe78acdd",
+      "episode_timestamp": 54907.961650833,
+      "evidence": {
+        "aggregate_metrics": {
+          "constraint_fallback_rate": 0.0,
+          "execution_value": 0.0,
+          "fees": 0.0,
+          "fill_ratio": 0.0,
+          "reward": -10000.0,
+          "signed_markout": 0.0,
+          "spread_capture": 0.0,
+          "unfilled_penalty": 10000.0
+        },
+        "evidence_id": "evidence-g23",
+        "experience_ids": [
+          "93c93e8e7e4122eba6e6ecf7"
+        ],
+        "metric_slices": {
+          "AAPL": {
+            "constraint_fallback_rate": 0.0,
+            "execution_value": 0.0,
+            "fees": 0.0,
+            "fill_ratio": 0.0,
+            "reward": -10000.0,
+            "signed_markout": 0.0,
+            "spread_capture": 0.0,
+            "unfilled_penalty": 10000.0
+          }
+        },
+        "sample_count": 1
+      },
+      "factory_backend": "llm",
+      "factory_decision": "PROMOTED",
+      "factory_error": null,
+      "factory_latency_ms": 16708,
+      "factory_model_config_hash": "59a1f51f0d49131efdfd320485c1d95a5494ba0b06f7634c82358fc022e7f934",
+      "factory_prompt_version": "factory-v4",
+      "factory_retry_count": 0,
+      "factory_token_usage": {
+        "input": 2081,
+        "output": 1198
+      },
+      "fallback_used": false,
+      "fill_ratio": 0.0,
+      "generation": 23,
+      "mutation": {
+        "operation": "ADD",
+        "target_path": "constraints.allowed_offsets",
+        "value": 0
+      },
+      "opportunity": {
+        "action_outcomes": [
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 0,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 1,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 1.0,
+            "filled_quantity": 100,
+            "offset_ticks": 2,
+            "reward": -45000.0,
+            "time_to_first_fill": 11.49596216899954,
+            "time_to_full_fill": 11.49602911099646
+          }
+        ],
+        "available": true,
+        "best_action_reward": -10000.0,
+        "best_available_fill_ratio": 1.0,
+        "best_available_reward": -10000.0,
+        "captured": false,
+        "chosen_action_reward": -10000.0,
+        "constant_outcome": false,
+        "decision_regret": 0.0,
+        "fillable_offsets": [
+          2
+        ],
+        "outcome_differentiated": true,
+        "selected_action_fillable": false,
+        "unavoidable_no_fill": false
+      },
+      "parse_success": true,
+      "reward": -10000.0,
+      "selected_action": 1,
+      "signed_markout": 0.0,
+      "spread_capture": 0.0,
+      "successor_harness_id": "0e905bb6a49cd6aaa9cfbfd7",
+      "successor_measured": false,
+      "time_to_fill": null,
+      "time_to_first_fill": null,
+      "transition_status": "PROMOTED",
+      "unfilled_penalty": 10000.0,
+      "validation": {
+        "causality": "passed",
+        "compile": "passed",
+        "factory_output": "passed",
+        "interface": "passed",
+        "offline_smoke_test": "passed",
+        "schema_semantics": "passed",
+        "spec_diff": {
+          "constraints.allowed_offsets": {
+            "from": [
+              1
+            ],
+            "to": [
+              1,
+              0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "active_harness_id": "0e905bb6a49cd6aaa9cfbfd7",
+      "active_harness_version": 21,
+      "candidate_harness_id": "b070d9ab6e76436f557d513d",
+      "decision_agent_error": null,
+      "decision_agent_latency_ms": 43641,
+      "decision_agent_token_usage": {
+        "input": 1148,
+        "output": 1397
+      },
+      "decision_reason": "operational_validation_passed",
+      "diagnosis": {
+        "affected_metric": "fill_ratio",
+        "confidence": 0.6,
+        "diagnosis_id": "diagnosis-6c867c8c8f0a9a76",
+        "evidence_refs": [
+          "evidence-g24:aggregate:fill_ratio",
+          "evidence-g24:aggregate:unfilled_penalty"
+        ],
+        "suspected_cause": "The allowed offsets [1,0] may not include an offset that can achieve fills in the current market conditions; the agent selected offset 1 and received no fills.",
+        "suspected_harness_component": "constraints.allowed_offsets"
+      },
+      "episode_id": "93ab32613182b8ebff6beb3b",
+      "episode_timestamp": 55808.59713452,
+      "evidence": {
+        "aggregate_metrics": {
+          "constraint_fallback_rate": 0.0,
+          "execution_value": 0.0,
+          "fees": 0.0,
+          "fill_ratio": 0.0,
+          "reward": -10000.0,
+          "signed_markout": 0.0,
+          "spread_capture": 0.0,
+          "unfilled_penalty": 10000.0
+        },
+        "evidence_id": "evidence-g24",
+        "experience_ids": [
+          "4993997bfe381221458413a8"
+        ],
+        "metric_slices": {
+          "AAPL": {
+            "constraint_fallback_rate": 0.0,
+            "execution_value": 0.0,
+            "fees": 0.0,
+            "fill_ratio": 0.0,
+            "reward": -10000.0,
+            "signed_markout": 0.0,
+            "spread_capture": 0.0,
+            "unfilled_penalty": 10000.0
+          }
+        },
+        "sample_count": 1
+      },
+      "factory_backend": "llm",
+      "factory_decision": "PROMOTED",
+      "factory_error": null,
+      "factory_latency_ms": 34766,
+      "factory_model_config_hash": "59a1f51f0d49131efdfd320485c1d95a5494ba0b06f7634c82358fc022e7f934",
+      "factory_prompt_version": "factory-v4",
+      "factory_retry_count": 0,
+      "factory_token_usage": {
+        "input": 2077,
+        "output": 2576
+      },
+      "fallback_used": false,
+      "fill_ratio": 0.0,
+      "generation": 24,
+      "mutation": {
+        "operation": "ADD",
+        "target_path": "constraints.allowed_offsets",
+        "value": 2
+      },
+      "opportunity": {
+        "action_outcomes": [
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 0,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 1,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 2,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          }
+        ],
+        "available": false,
+        "best_action_reward": -10000.0,
+        "best_available_fill_ratio": 0.0,
+        "best_available_reward": -10000.0,
+        "captured": null,
+        "chosen_action_reward": -10000.0,
+        "constant_outcome": true,
+        "decision_regret": 0.0,
+        "fillable_offsets": [],
+        "outcome_differentiated": false,
+        "selected_action_fillable": false,
+        "unavoidable_no_fill": true
+      },
+      "parse_success": true,
+      "reward": -10000.0,
+      "selected_action": 1,
+      "signed_markout": 0.0,
+      "spread_capture": 0.0,
+      "successor_harness_id": "b070d9ab6e76436f557d513d",
+      "successor_measured": false,
+      "time_to_fill": null,
+      "time_to_first_fill": null,
+      "transition_status": "PROMOTED",
+      "unfilled_penalty": 10000.0,
+      "validation": {
+        "causality": "passed",
+        "compile": "passed",
+        "factory_output": "passed",
+        "interface": "passed",
+        "offline_smoke_test": "passed",
+        "schema_semantics": "passed",
+        "spec_diff": {
+          "constraints.allowed_offsets": {
+            "from": [
+              1,
+              0
+            ],
+            "to": [
+              1,
+              0,
+              2
+            ]
+          }
+        }
+      }
+    },
+    {
+      "active_harness_id": "b070d9ab6e76436f557d513d",
+      "active_harness_version": 22,
+      "candidate_harness_id": "d613235a104e09681b35e022",
+      "decision_agent_error": null,
+      "decision_agent_latency_ms": 87759,
+      "decision_agent_token_usage": {
+        "input": 1158,
+        "output": 4612
+      },
+      "decision_reason": "operational_validation_passed",
+      "diagnosis": {
+        "affected_metric": "signed_markout",
+        "confidence": 0.6,
+        "diagnosis_id": "diagnosis-5a59591e1bde30ad",
+        "evidence_refs": [
+          "evidence-g25:aggregate:signed_markout",
+          "evidence-g25:aggregate:reward"
+        ],
+        "suspected_cause": "The compare_all_actions procedure selected offset_ticks=1, which resulted in a negative signed markout (-1600) despite positive spread capture (650), indicating adverse selection. The procedure may not adequately account for short-term volatility or imbalance when choosing the offset.",
+        "suspected_harness_component": "decision.procedure"
+      },
+      "episode_id": "1a48eda859e3035f8e18ca32",
+      "episode_timestamp": 56708.601271132,
+      "evidence": {
+        "aggregate_metrics": {
+          "constraint_fallback_rate": 0.0,
+          "execution_value": -160000.0,
+          "fees": 0.0,
+          "fill_ratio": 1.0,
+          "reward": -160000.0,
+          "signed_markout": -1600.0,
+          "spread_capture": 650.0,
+          "unfilled_penalty": 0.0
+        },
+        "evidence_id": "evidence-g25",
+        "experience_ids": [
+          "c5b312e355418a2edca6c41b"
+        ],
+        "metric_slices": {
+          "AAPL": {
+            "constraint_fallback_rate": 0.0,
+            "execution_value": -160000.0,
+            "fees": 0.0,
+            "fill_ratio": 1.0,
+            "reward": -160000.0,
+            "signed_markout": -1600.0,
+            "spread_capture": 650.0,
+            "unfilled_penalty": 0.0
+          }
+        },
+        "sample_count": 1
+      },
+      "factory_backend": "llm",
+      "factory_decision": "PROMOTED",
+      "factory_error": null,
+      "factory_latency_ms": 71826,
+      "factory_model_config_hash": "59a1f51f0d49131efdfd320485c1d95a5494ba0b06f7634c82358fc022e7f934",
+      "factory_prompt_version": "factory-v4",
+      "factory_retry_count": 0,
+      "factory_token_usage": {
+        "input": 2103,
+        "output": 2618
+      },
+      "fallback_used": false,
+      "fill_ratio": 1.0,
+      "generation": 25,
+      "mutation": {
+        "operation": "SET",
+        "target_path": "decision.procedure",
+        "value": "propose_critic_revise"
+      },
+      "opportunity": {
+        "action_outcomes": [
+          {
+            "fill_ratio": 0.45,
+            "filled_quantity": 45,
+            "offset_ticks": 0,
+            "reward": -82000.0,
+            "time_to_first_fill": 21.138294151998707,
+            "time_to_full_fill": null
+          },
+          {
+            "fill_ratio": 1.0,
+            "filled_quantity": 100,
+            "offset_ticks": 1,
+            "reward": -160000.0,
+            "time_to_first_fill": 22.216687198997533,
+            "time_to_full_fill": 22.216687198997533
+          },
+          {
+            "fill_ratio": 0.0,
+            "filled_quantity": 0,
+            "offset_ticks": 2,
+            "reward": -10000.0,
+            "time_to_first_fill": null,
+            "time_to_full_fill": null
+          }
+        ],
+        "available": true,
+        "best_action_reward": -10000.0,
+        "best_available_fill_ratio": 1.0,
+        "best_available_reward": -10000.0,
+        "captured": true,
+        "chosen_action_reward": -160000.0,
+        "constant_outcome": false,
+        "decision_regret": 150000.0,
+        "fillable_offsets": [
+          0,
+          1
+        ],
+        "outcome_differentiated": true,
+        "selected_action_fillable": true,
+        "unavoidable_no_fill": false
+      },
+      "parse_success": true,
+      "reward": -160000.0,
+      "selected_action": 1,
+      "signed_markout": -1600.0,
+      "spread_capture": 650.0,
+      "successor_harness_id": "d613235a104e09681b35e022",
+      "successor_measured": false,
+      "time_to_fill": 22.216687198997533,
+      "time_to_first_fill": 22.216687198997533,
+      "transition_status": "PROMOTED",
+      "unfilled_penalty": 0.0,
+      "validation": {
+        "causality": "passed",
+        "compile": "passed",
+        "factory_output": "passed",
+        "interface": "passed",
+        "offline_smoke_test": "passed",
+        "schema_semantics": "passed",
+        "spec_diff": {
+          "decision.procedure": {
+            "from": "compare_all_actions",
+            "to": "propose_critic_revise"
+          }
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "no-impact historical replay",
+    "conservative queue model",
+    "sample data covers a single trading date"
+  ],
+  "performance_summary": {
+    "baseline_summary": {
+      "agent_minus_best_constant_mean_reward": -33161.53846153846,
+      "best_constant_baseline": "always_offset_2",
+      "definition": "constant-offset baselines are computed from the recorded per-generation counterfactual rewards; no additional replay or inference was performed",
+      "policies": {
+        "agent": {
+          "cumulative_reward": -310800.0,
+          "mean_reward": -11953.846153846154,
+          "mean_reward_outcome_differentiated": -16350.0
+        },
+        "always_offset_0": {
+          "cumulative_reward": -383350.0,
+          "mean_reward": -14744.23076923077,
+          "mean_reward_outcome_differentiated": -25418.75
+        },
+        "always_offset_1": {
+          "cumulative_reward": -253500.0,
+          "mean_reward": -9750.0,
+          "mean_reward_outcome_differentiated": -9187.5
+        },
+        "always_offset_2": {
+          "cumulative_reward": 551400.0,
+          "mean_reward": 21207.69230769231,
+          "mean_reward_outcome_differentiated": 91425.0
+        },
+        "oracle": {
+          "cumulative_reward": 600250.0,
+          "mean_reward": 23086.53846153846,
+          "mean_reward_outcome_differentiated": 97531.25
+        }
+      }
+    },
+    "constant_outcome_episodes": 18,
+    "final_expanding_mean_reward": -11953.846153846154,
+    "generation_count": 26,
+    "invalid_successors": 3,
+    "mean_regret_on_outcome_differentiated_episodes": 113881.25,
+    "mean_reward": -11953.846153846154,
+    "outcome_differentiated_episodes": 8,
+    "promoted_successors": 23,
+    "reverted_successors": 0
+  },
+  "promoted_lineage": [
+    "e41aadfa6cfc3df994526f43",
+    "8cd28a9db1a69c6400b33e2a",
+    "437d5c8965856fc03b78f736",
+    "f5c6e7a2013055d026eb722e",
+    "60c2e06e175cd17dbaac39bb",
+    "2789e6258c37d0e858a88be8",
+    "fff7e742d831b93c1b0996f5",
+    "8a42ae180968430a58a902ea",
+    "3fc6b5f9013b48021bf807d4",
+    "ad55ca3fd73902da27820a47",
+    "3fc6b5f9013b48021bf807d4",
+    "4e35dc90be505d618c173e7a",
+    "97ab192d947a4b4316cb295f",
+    "bd79eba6eb35dbd142e57537",
+    "3290ef337a1232e6aa36e0a5",
+    "b4d9350e5537b61e82ec991d",
+    "51524b30869e320dddc73690",
+    "4f16b23f627ac5a99c370e56",
+    "51524b30869e320dddc73690",
+    "0e905bb6a49cd6aaa9cfbfd7",
+    "5006e1766f69014732dc0aaa",
+    "0e905bb6a49cd6aaa9cfbfd7",
+    "b070d9ab6e76436f557d513d",
+    "d613235a104e09681b35e022"
+  ],
+  "scope": "sequential one-episode evolution across 1 instruments at common depth 10"
+}

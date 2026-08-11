@@ -1,0 +1,187 @@
+{
+  "final_harness_id": "d613235a104e09681b35e022",
+  "initial_harness_id": "e41aadfa6cfc3df994526f43",
+  "promoted_harness_ids": [
+    "8cd28a9db1a69c6400b33e2a",
+    "437d5c8965856fc03b78f736",
+    "f5c6e7a2013055d026eb722e",
+    "60c2e06e175cd17dbaac39bb",
+    "2789e6258c37d0e858a88be8",
+    "fff7e742d831b93c1b0996f5",
+    "8a42ae180968430a58a902ea",
+    "3fc6b5f9013b48021bf807d4",
+    "ad55ca3fd73902da27820a47",
+    "3fc6b5f9013b48021bf807d4",
+    "4e35dc90be505d618c173e7a",
+    "97ab192d947a4b4316cb295f",
+    "bd79eba6eb35dbd142e57537",
+    "3290ef337a1232e6aa36e0a5",
+    "b4d9350e5537b61e82ec991d",
+    "51524b30869e320dddc73690",
+    "4f16b23f627ac5a99c370e56",
+    "51524b30869e320dddc73690",
+    "0e905bb6a49cd6aaa9cfbfd7",
+    "5006e1766f69014732dc0aaa",
+    "0e905bb6a49cd6aaa9cfbfd7",
+    "b070d9ab6e76436f557d513d",
+    "d613235a104e09681b35e022"
+  ],
+  "transitions": [
+    {
+      "generation": 0,
+      "parent_harness_id": "e41aadfa6cfc3df994526f43",
+      "status": "PROMOTED",
+      "successor_harness_id": "8cd28a9db1a69c6400b33e2a"
+    },
+    {
+      "generation": 1,
+      "parent_harness_id": "8cd28a9db1a69c6400b33e2a",
+      "status": "PROMOTED",
+      "successor_harness_id": "437d5c8965856fc03b78f736"
+    },
+    {
+      "generation": 2,
+      "parent_harness_id": "437d5c8965856fc03b78f736",
+      "status": "PROMOTED",
+      "successor_harness_id": "f5c6e7a2013055d026eb722e"
+    },
+    {
+      "generation": 3,
+      "parent_harness_id": "f5c6e7a2013055d026eb722e",
+      "status": "PROMOTED",
+      "successor_harness_id": "60c2e06e175cd17dbaac39bb"
+    },
+    {
+      "generation": 4,
+      "parent_harness_id": "60c2e06e175cd17dbaac39bb",
+      "status": "INVALID",
+      "successor_harness_id": "60c2e06e175cd17dbaac39bb"
+    },
+    {
+      "generation": 5,
+      "parent_harness_id": "60c2e06e175cd17dbaac39bb",
+      "status": "PROMOTED",
+      "successor_harness_id": "2789e6258c37d0e858a88be8"
+    },
+    {
+      "generation": 6,
+      "parent_harness_id": "2789e6258c37d0e858a88be8",
+      "status": "PROMOTED",
+      "successor_harness_id": "fff7e742d831b93c1b0996f5"
+    },
+    {
+      "generation": 7,
+      "parent_harness_id": "fff7e742d831b93c1b0996f5",
+      "status": "PROMOTED",
+      "successor_harness_id": "8a42ae180968430a58a902ea"
+    },
+    {
+      "generation": 8,
+      "parent_harness_id": "8a42ae180968430a58a902ea",
+      "status": "PROMOTED",
+      "successor_harness_id": "3fc6b5f9013b48021bf807d4"
+    },
+    {
+      "generation": 9,
+      "parent_harness_id": "3fc6b5f9013b48021bf807d4",
+      "status": "PROMOTED",
+      "successor_harness_id": "ad55ca3fd73902da27820a47"
+    },
+    {
+      "generation": 10,
+      "parent_harness_id": "ad55ca3fd73902da27820a47",
+      "status": "INVALID",
+      "successor_harness_id": "ad55ca3fd73902da27820a47"
+    },
+    {
+      "generation": 11,
+      "parent_harness_id": "ad55ca3fd73902da27820a47",
+      "status": "PROMOTED",
+      "successor_harness_id": "3fc6b5f9013b48021bf807d4"
+    },
+    {
+      "generation": 12,
+      "parent_harness_id": "3fc6b5f9013b48021bf807d4",
+      "status": "PROMOTED",
+      "successor_harness_id": "4e35dc90be505d618c173e7a"
+    },
+    {
+      "generation": 13,
+      "parent_harness_id": "4e35dc90be505d618c173e7a",
+      "status": "PROMOTED",
+      "successor_harness_id": "97ab192d947a4b4316cb295f"
+    },
+    {
+      "generation": 14,
+      "parent_harness_id": "97ab192d947a4b4316cb295f",
+      "status": "PROMOTED",
+      "successor_harness_id": "bd79eba6eb35dbd142e57537"
+    },
+    {
+      "generation": 15,
+      "parent_harness_id": "bd79eba6eb35dbd142e57537",
+      "status": "PROMOTED",
+      "successor_harness_id": "3290ef337a1232e6aa36e0a5"
+    },
+    {
+      "generation": 16,
+      "parent_harness_id": "3290ef337a1232e6aa36e0a5",
+      "status": "PROMOTED",
+      "successor_harness_id": "b4d9350e5537b61e82ec991d"
+    },
+    {
+      "generation": 17,
+      "parent_harness_id": "b4d9350e5537b61e82ec991d",
+      "status": "PROMOTED",
+      "successor_harness_id": "51524b30869e320dddc73690"
+    },
+    {
+      "generation": 18,
+      "parent_harness_id": "51524b30869e320dddc73690",
+      "status": "PROMOTED",
+      "successor_harness_id": "4f16b23f627ac5a99c370e56"
+    },
+    {
+      "generation": 19,
+      "parent_harness_id": "4f16b23f627ac5a99c370e56",
+      "status": "PROMOTED",
+      "successor_harness_id": "51524b30869e320dddc73690"
+    },
+    {
+      "generation": 20,
+      "parent_harness_id": "51524b30869e320dddc73690",
+      "status": "PROMOTED",
+      "successor_harness_id": "0e905bb6a49cd6aaa9cfbfd7"
+    },
+    {
+      "generation": 21,
+      "parent_harness_id": "0e905bb6a49cd6aaa9cfbfd7",
+      "status": "PROMOTED",
+      "successor_harness_id": "5006e1766f69014732dc0aaa"
+    },
+    {
+      "generation": 22,
+      "parent_harness_id": "5006e1766f69014732dc0aaa",
+      "status": "INVALID",
+      "successor_harness_id": "5006e1766f69014732dc0aaa"
+    },
+    {
+      "generation": 23,
+      "parent_harness_id": "5006e1766f69014732dc0aaa",
+      "status": "PROMOTED",
+      "successor_harness_id": "0e905bb6a49cd6aaa9cfbfd7"
+    },
+    {
+      "generation": 24,
+      "parent_harness_id": "0e905bb6a49cd6aaa9cfbfd7",
+      "status": "PROMOTED",
+      "successor_harness_id": "b070d9ab6e76436f557d513d"
+    },
+    {
+      "generation": 25,
+      "parent_harness_id": "b070d9ab6e76436f557d513d",
+      "status": "PROMOTED",
+      "successor_harness_id": "d613235a104e09681b35e022"
+    }
+  ]
+}

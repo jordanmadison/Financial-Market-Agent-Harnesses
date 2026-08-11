@@ -1,0 +1,6 @@
+{
+  "fee_per_share": 0.0,
+  "queue_model": "conservative",
+  "tick_size": 100,
+  "unfilled_penalty_per_share": 100.0
+}

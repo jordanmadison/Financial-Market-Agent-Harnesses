@@ -1,0 +1,45 @@
+{
+  "generation": 0,
+  "factory_backend": "llm",
+  "factory_prompt_version": "factory-v4",
+  "factory_model_config_hash": "example-config-hash",
+  "active_harness_id": "e41aadfa6cfc3df994526f43",
+  "episode_id": "example-episode-0",
+  "successor_harness_id": "f363cb5726a668f25ff5dc8b",
+  "factory_call": {
+    "requested_model": "deepseek/deepseek-v4-flash-0731",
+    "returned_model": "deepseek/deepseek-v4-flash-0731",
+    "upstream_provider": "DeepInfra",
+    "prompt_hash": "example-prompt-hash",
+    "prompt_version": "factory-v4",
+    "raw_response": "{\"diagnosis\":{\"affected_metric\":\"fill_ratio\",\"evidence_refs\":[\"evidence-g0\"],\"suspected_harness_component\":\"augmentation\",\"suspected_cause\":\"limited queue context\",\"confidence\":0.8},\"inspection\":{\"component\":\"augmentation\",\"current_behavior\":\"spread only\",\"limitation\":\"no imbalance\"},\"improvement\":{\"component\":\"augmentation\",\"rationale\":\"add causal pressure\",\"expected_metric_effect\":\"increase fill_ratio\"},\"mutation\":{\"operation\":\"ADD\",\"target_path\":\"augmentation.features\",\"value\":\"level1_imbalance\"}}",
+    "input_tokens": 1100,
+    "output_tokens": 900,
+    "latency_ms": 25000,
+    "retry_count": 0,
+    "error": null
+  },
+  "evidence": {
+    "evidence_id": "evidence-g0",
+    "sample_count": 1,
+    "aggregate_metrics": {
+      "reward": -10000.0,
+      "fill_ratio": 0.0,
+      "signed_markout": 0.0
+    }
+  },
+  "mutation": {
+    "operation": "ADD",
+    "target_path": "augmentation.features",
+    "value": "level1_imbalance"
+  },
+  "validation_results": {
+    "factory_output": "passed",
+    "schema_semantics": "passed",
+    "compile": "passed",
+    "interface": "passed",
+    "causality": "passed",
+    "offline_smoke_test": "passed"
+  },
+  "transition_status": "PROMOTED"
+}

@@ -1,0 +1,61 @@
+{
+  "config": {
+    "agent": "openrouter",
+    "data_dir": "data",
+    "depth": 10,
+    "evolution_mode": "direct_successor",
+    "factory_backend": "llm",
+    "factory_max_output_tokens": 16384,
+    "factory_upstream_provider": "DeepInfra",
+    "markout_horizon_ms": 30000,
+    "max_episodes_per_dataset": 30,
+    "max_generations": 26,
+    "output_dir": "runs",
+    "quantity": 100,
+    "queue_model": "conservative",
+    "replay_horizon_ms": 30000,
+    "seed": 7,
+    "spacing_ms": 900000,
+    "tick_size": 100,
+    "tickers": [
+      "AAPL"
+    ],
+    "upstream_provider": "DeepInfra"
+  },
+  "factory": {
+    "config": {
+      "allow_fallbacks": false,
+      "max_output_tokens": 16384,
+      "max_retries": 2,
+      "model_id": "deepseek/deepseek-v4-flash-0731",
+      "provider": "openrouter",
+      "temperature": 0.0,
+      "timeout_seconds": 180,
+      "top_p": 1.0,
+      "upstream_provider": "DeepInfra"
+    },
+    "config_hash": "59a1f51f0d49131efdfd320485c1d95a5494ba0b06f7634c82358fc022e7f934",
+    "kind": "llm",
+    "prompt_version": "factory-v4"
+  },
+  "fixed_agent": {
+    "config": {
+      "allow_fallbacks": false,
+      "exclude_reasoning": true,
+      "max_output_tokens": 16384,
+      "max_retries": 2,
+      "model_id": "deepseek/deepseek-v4-flash-0731",
+      "provider": "openrouter",
+      "reasoning_effort": "medium",
+      "seed": null,
+      "temperature": 0.0,
+      "timeout_seconds": 180,
+      "top_p": 1.0,
+      "upstream_provider": "DeepInfra"
+    },
+    "config_hash": "abb0dcfd40624d4db28ed91caa21a46e5997d4c8e3fb40ba2bffb289c63421fc",
+    "kind": "openrouter"
+  },
+  "run_id": "20260810T212427Z-18ae798e",
+  "status": "complete"
+}
