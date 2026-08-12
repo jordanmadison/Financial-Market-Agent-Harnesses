@@ -4,6 +4,38 @@ The below is AI-Generated. Here is a blog written by me, https://jmadison.me/pos
 
 A standard-library-only research prototype that evolves a constrained agent harness while placing passive orders against historical LOBSTER order-book data.
 
+## Harness evolution modes
+
+The two artifact families are intentionally distinct and historical artifacts are
+never silently reinterpreted:
+
+* **`baseline-domain-specific-language`** (the existing CLI baseline): the
+  Factory selects and composes implementations already present in the feature,
+  feedback, constraint, and decision registries through a typed mutation.
+* **`generate-implementation`**: the Factory generates executable Python for
+  exactly one of the fixed `observe`, `augment`, `constrain`, `evaluate`, or
+  `feedback` functions.  The complete source specification is versioned, the
+  selected source is replaced, and all other function sources remain identical.
+
+In implementation mode, source stored in `HarnessImplementationSpec` is compiled
+with Python's normal `compile`/`exec` machinery and bound to the local runtime
+harness. Its outputs become the market context, historical feedback, legal
+offsets, and evaluation guidance in the decision prompt. Local parsing and action
+constraint enforcement remain authoritative; replay, queue behavior, reward,
+evidence, model configuration, and persistence remain outside the replaceable
+interface. A runnable implementation is promoted immediately and is measured for
+the first time on its next chronological episode—there is no performance
+comparison, validation inference call, repair call, candidate ranking, or replay
+of historical harnesses. Operational validity therefore does **not** imply a
+performance improvement, and a final promoted successor can be valid but
+unmeasured.
+
+> **Trusted-code limitation:** implementation synthesis V1 is an experimental
+> development prototype. Factory-generated Python executes directly in the local
+> experiment process. There is no sandbox, worker/container boundary, capability
+> restriction, or other security boundary. It is knowingly unsafe for untrusted
+> or production use.
+
 Each generation performs exactly this sequence:
 
 ```text
@@ -11,12 +43,16 @@ active harness
 → one decision-agent call on one chronological episode
 → deterministic market replay and objective outcome
 → deterministic evidence construction
-→ one Factory call proposing one atomic HarnessSpec mutation
+→ one Factory call proposing one atomic DSL mutation or one function implementation
 → deterministic operational validation
 → promote a runnable successor, otherwise retain the active harness
 ```
 
-Only one harness is active at a time. The Factory generates a typed mutation—not Python, simulator logic, or reward code. No model weights are trained, and validation makes no LLM calls. Performance is measured when a harness executes during its normal generation; historical harnesses are not rerun for evaluation.
+Only one harness is active at a time. The baseline Factory generates a typed
+mutation; the implementation Factory generates one complete Python function but
+cannot change the fixed interface. No model weights are trained, and compilation
+makes no LLM calls. Performance is measured when a harness executes during its
+normal generation; historical harnesses are not rerun for evaluation.
 
 ## Scope
 

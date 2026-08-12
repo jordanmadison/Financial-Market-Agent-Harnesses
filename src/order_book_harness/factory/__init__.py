@@ -11,6 +11,18 @@ from .evidence import (
 )
 from .heuristic import HeuristicFactory
 from .llm import LLMFactory, build_factory_messages
+from .implementation import (
+    IMPLEMENTATION_FACTORY_PROMPT_VERSION,
+    FunctionInspection,
+    ImplementationDiagnosis,
+    ImplementationFactoryBackend,
+    ImplementationFactoryCall,
+    ImplementationImprovement,
+    ImplementationProposal,
+    LLMImplementationFactory,
+    build_implementation_factory_messages,
+    parse_implementation_proposal,
+)
 from .types import (
     FACTORY_PROMPT_VERSION,
     Diagnosis,
@@ -39,6 +51,16 @@ __all__ = [
     "HeuristicFactory",
     "Improvement",
     "LLMFactory",
+    "IMPLEMENTATION_FACTORY_PROMPT_VERSION",
+    "FunctionInspection",
+    "ImplementationDiagnosis",
+    "ImplementationFactoryBackend",
+    "ImplementationFactoryCall",
+    "ImplementationImprovement",
+    "ImplementationProposal",
+    "LLMImplementationFactory",
+    "build_implementation_factory_messages",
+    "parse_implementation_proposal",
     "SuccessorAttempt",
     "allowed_evidence_refs",
     "apply_mutation",
