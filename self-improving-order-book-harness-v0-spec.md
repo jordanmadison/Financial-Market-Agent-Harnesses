@@ -1284,3 +1284,35 @@ Proposal validation additionally rejects a mutation that is the exact inverse (A
 - `gated`: adds deterministic revert-on-regression. When the active harness was promoted by the immediately preceding generation and its first measured episode is outcome-differentiated with a strictly lower reward than the parent's measured episode, the lineage reverts to the parent specification and the generation records transition status `REVERTED`. The factory call still executes and its proposal is recorded in `successors.jsonl`, but it is not promoted in a reverted generation. Constant-outcome episodes never trigger reversion because they carry no decision signal.
 
 `transitions.jsonl` and `generations.jsonl` therefore admit three statuses: `PROMOTED`, `INVALID`, `REVERTED`. The reverted-to harness identity appears as the generation's successor. Cross-episode reward comparison is a deterministic, acknowledged approximation; it gates only first measurements of new successors and is restricted to outcome-differentiated episodes.
+# Implementation synthesis V1 extension
+
+The original configuration DSL remains a backward-compatible baseline whose
+Factory selects predefined implementations. The separate
+`generate-implementation` artifact model stores a complete, canonical
+`HarnessImplementationSpec` containing concrete source for the fixed `observe`,
+`augment`, `constrain`, `evaluate`, and `feedback` interface. H0 has a non-empty
+baseline implementation of every function. Identity hashes the complete canonical
+specification, interface version, and implementation compiler version.
+
+Each chronological generation runs the active harness once, replays the unchanged
+environment, derives evidence, and performs one logical Factory operation. The
+Factory response has exactly four objects: `diagnosis`, `inspection`,
+`improvement`, and one `implementation` with `function_name`, `description`, and
+complete Python `source`. The current trajectory (including parse/fallback
+telemetry and selected action), objective outcome, causal evidence, bounded prior
+attempt errors, complete current source specification, fixed signatures/domain
+types, and immutable architectural constraints are supplied. Credentials and
+future episode information are not supplied.
+
+Normal Python `compile` and `exec` load the expected callable in the experiment
+process, and the runtime binds it as the selected method. All unselected sources
+remain unchanged. Parse, load, signature, or construction failure records
+`INVALID`, creates no successor identity, and retains H_t. Successful compilation
+records `PROMOTED` without reward comparison, successor decision-agent execution,
+repair call, or candidate ranking. Generated outputs flow into the ordinary
+decision prompt; local action parsing and constraints remain authoritative.
+
+Generated code is trusted development-time code. V1 has no sandbox or security
+boundary and is unsafe for untrusted or production use. Process/container
+isolation, AST policies, capability restrictions, adversarial analysis, and
+resource isolation are explicitly deferred.
