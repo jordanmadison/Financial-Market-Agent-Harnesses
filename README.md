@@ -6,16 +6,55 @@ Can an LLM make better placement decisions by changing the harness around it? Th
 
 Read the [companion blog](https://jmadison.me/posts/self-improving-harness-implementation/) for the motivation, worked example, results, and future directions. This repository contains the implementation and recorded evidence behind that post.
 
-## How it works
+## Harness evolution modes
+
+The two artifact families are intentionally distinct and historical artifacts are
+never silently reinterpreted:
+
+* **`baseline-domain-specific-language`** (the existing CLI baseline): the
+  Factory selects and composes implementations already present in the feature,
+  feedback, constraint, and decision registries through a typed mutation.
+* **`generate-implementation`**: the Factory generates executable Python for
+  exactly one of the fixed `observe`, `augment`, `constrain`, `evaluate`, or
+  `feedback` functions.  The complete source specification is versioned, the
+  selected source is replaced, and all other function sources remain identical.
+
+In implementation mode, source stored in `HarnessImplementationSpec` is compiled
+with Python's normal `compile`/`exec` machinery and bound to the local runtime
+harness. Its outputs become the market context, historical feedback, legal
+offsets, and evaluation guidance in the decision prompt. Local parsing and action
+constraint enforcement remain authoritative; replay, queue behavior, reward,
+evidence, model configuration, and persistence remain outside the replaceable
+interface. A runnable implementation is promoted immediately and is measured for
+the first time on its next chronological episode—there is no performance
+comparison, validation inference call, repair call, candidate ranking, or replay
+of historical harnesses. Operational validity therefore does **not** imply a
+performance improvement, and a final promoted successor can be valid but
+unmeasured.
+
+> **Trusted-code limitation:** implementation synthesis V1 is an experimental
+> development prototype. Factory-generated Python executes directly in the local
+> experiment process. There is no sandbox, worker/container boundary, capability
+> restriction, or other security boundary. It is knowingly unsafe for untrusted
+> or production use.
+
+Each generation performs exactly this sequence:
 
 ```text
-Market snapshot + active harness → decision agent chooses a price offset
-→ local replay measures the outcome → Factory proposes one configuration change
-→ local validation accepts the successor or keeps the current harness
-→ next chronological episode
+active harness
+→ one decision-agent call on one chronological episode
+→ deterministic market replay and objective outcome
+→ deterministic evidence construction
+→ one Factory call proposing one atomic DSL mutation or one function implementation
+→ deterministic operational validation
+→ promote a runnable successor, otherwise retain the active harness
 ```
 
-The harness controls visible market data, computed features, decision instructions, allowed offsets, and outcome history. The Factory changes that configuration; it generates no Python code and trains no model weights. In the reported run, acceptance means the successor can run, not that it performs better.
+Only one harness is active at a time. The baseline Factory generates a typed
+mutation; the implementation Factory generates one complete Python function but
+cannot change the fixed interface. No model weights are trained, and compilation
+makes no LLM calls. Performance is measured when a harness executes during its
+normal generation; historical harnesses are not rerun for evaluation.
 
 Each episode supplies a buy or sell instruction for 100 shares. The agent chooses a passive offset of 0, 1, or 2 ticks, and the simulator replays 30 seconds of historical events. See [the architecture guide](docs/architecture.md) for the components and a reading path through the code.
 
