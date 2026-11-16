@@ -1,8 +1,11 @@
 # Self-Improving Order-Book Placement Agent — V0 Specification
 
-**Status:** Draft for implementation  
+**Status:** Original design reference
+
 **Version:** 0.2  
 **Date:** 2026-08-09
+
+> This document preserves the original design and implementation notes. Some plans and versioned sections differ from the current code. Start with the [README](README.md), [architecture guide](docs/architecture.md), and [experiment guide](docs/experiments.md) for the maintained entry points. The [saved experiment report](runs/20260810T212427Z-18ae798e/delivery_report.md) supports the blog's numerical claims.
 
 ## 1. Purpose
 

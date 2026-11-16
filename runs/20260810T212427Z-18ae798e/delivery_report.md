@@ -115,4 +115,3 @@ Only generation 13 selected a positive-reward action. A differentiated episode c
 ## Limitations
 
 This is a one-session mechanism demonstration. Nearby episodes are not independent market regimes. The conservative queue model gives a lower-bound fill estimate. `l3_fifo` remains experimental and its results are excluded from this primary claim. These results do not establish trading profitability or cross-session or cross-regime generalization.
-

@@ -1,8 +1,16 @@
+"""Replay hypothetical passive orders against historical market events."""
+
 from __future__ import annotations
 
 from dataclasses import dataclass, replace
 
-from .domain import EnvironmentObservation, Episode, LOBState, OrderOutcome, PlacementAction
+from .domain import (
+    EnvironmentObservation,
+    Episode,
+    LOBState,
+    OrderOutcome,
+    PlacementAction,
+)
 from .episodes import LoadedDataset
 
 
@@ -100,7 +108,9 @@ class _L3ReplayIndex:
     @staticmethod
     def apply_event(orders: dict[int, _DisplayedOrder], event, index: int) -> None:
         if event.event_type == 1 and event.order_id:
-            orders[event.order_id] = _DisplayedOrder(event.order_id, event.price, event.direction, event.size, index)
+            orders[event.order_id] = _DisplayedOrder(
+                event.order_id, event.price, event.direction, event.size, index
+            )
             return
         if event.event_type not in (2, 3, 4) or not event.order_id:
             return
@@ -126,16 +136,26 @@ class _L3ReplayIndex:
         return self._copy_orders(self._orders)
 
 
-def action_to_price(state: LOBState, side: str, action: PlacementAction, tick_size: int) -> int:
+def action_to_price(
+    state: LOBState, side: str, action: PlacementAction, tick_size: int
+) -> int:
     if side == "BUY":
         return state.bid_prices[0] - action.offset_ticks * tick_size
     return state.ask_prices[0] + action.offset_ticks * tick_size
 
 
 class OrderBookEnvironment:
-    def __init__(self, datasets: dict[str, LoadedDataset], config: EnvironmentConfig = EnvironmentConfig(), max_lookback: int = 100):
-        self.datasets = datasets; self.config = config; self.max_lookback = max_lookback
-        self._episode: Episode | None = None; self._data: LoadedDataset | None = None
+    def __init__(
+        self,
+        datasets: dict[str, LoadedDataset],
+        config: EnvironmentConfig = EnvironmentConfig(),
+        max_lookback: int = 100,
+    ):
+        self.datasets = datasets
+        self.config = config
+        self.max_lookback = max_lookback
+        self._episode: Episode | None = None
+        self._data: LoadedDataset | None = None
         self._l3_indices: dict[str, _L3ReplayIndex] = {}
         self.last_queue_diagnostics: QueueReplayDiagnostics | None = None
 
@@ -145,7 +165,9 @@ class OrderBookEnvironment:
         if i < self.max_lookback or i >= len(data.events):
             raise ValueError("episode index cannot support causal lookback")
         self._episode, self._data = episode, data
-        return EnvironmentObservation(episode, data.states[i], data.events[i - self.max_lookback + 1:i + 1])
+        return EnvironmentObservation(
+            episode, data.states[i], data.events[i - self.max_lookback + 1 : i + 1]
+        )
 
     def valid_actions(self) -> tuple[PlacementAction, ...]:
         return tuple(PlacementAction(x) for x in (0, 1, 2))
@@ -159,12 +181,23 @@ class OrderBookEnvironment:
         return self._step_conservative(action)
 
     def _step_conservative(self, action: PlacementAction) -> OrderOutcome:
-        ep, data = self._episode, self._data; i = ep.decision_event_index
-        state = data.states[i]; price = action_to_price(state, ep.parent_order.side, action, self.config.tick_size)
-        levels = dict(zip(state.bid_prices if ep.parent_order.side == "BUY" else state.ask_prices, state.bid_sizes if ep.parent_order.side == "BUY" else state.ask_sizes))
-        queue_ahead = max(0, levels.get(price, 0)); remaining = ep.parent_order.quantity
+        ep, data = self._episode, self._data
+        i = ep.decision_event_index
+        state = data.states[i]
+        price = action_to_price(
+            state, ep.parent_order.side, action, self.config.tick_size
+        )
+        levels = dict(
+            zip(
+                state.bid_prices if ep.parent_order.side == "BUY" else state.ask_prices,
+                state.bid_sizes if ep.parent_order.side == "BUY" else state.ask_sizes,
+            )
+        )
+        queue_ahead = max(0, levels.get(price, 0))
+        remaining = ep.parent_order.quantity
         fills: list[tuple[float, int, int]] = []
-        terminal_state = state; halted = False
+        terminal_state = state
+        halted = False
         terminal_time = ep.parent_order.decision_time + ep.markout_horizon_ms / 1000
         for j in range(i + 1, len(data.events)):
             event, after = data.events[j], data.states[j]
@@ -173,33 +206,66 @@ class OrderBookEnvironment:
             if event.timestamp > max(ep.parent_order.expiration_time, terminal_time):
                 break
             if event.event_type == 7:
-                halted = True; break
+                halted = True
+                break
             if event.timestamp > ep.parent_order.expiration_time or remaining == 0:
                 continue
             # Executions against resting buys have direction +1; against resting sells -1.
             compatible_direction = 1 if ep.parent_order.side == "BUY" else -1
-            if event.event_type == 4 and event.direction == compatible_direction and event.price == price:
+            if (
+                event.event_type == 4
+                and event.direction == compatible_direction
+                and event.price == price
+            ):
                 executable = event.size
-                consumed = min(queue_ahead, executable); queue_ahead -= consumed; executable -= consumed
+                consumed = min(queue_ahead, executable)
+                queue_ahead -= consumed
+                executable -= consumed
                 filled = min(remaining, executable)
                 if filled:
-                    fills.append((event.timestamp, filled, price)); remaining -= filled
+                    fills.append((event.timestamp, filled, price))
+                    remaining -= filled
         filled_qty = ep.parent_order.quantity - remaining
         arrival_mid = (state.bid_prices[0] + state.ask_prices[0]) / 2
-        terminal_mid = (terminal_state.bid_prices[0] + terminal_state.ask_prices[0]) / 2 if terminal_state.bid_prices and terminal_state.ask_prices else arrival_mid
+        terminal_mid = (
+            (terminal_state.bid_prices[0] + terminal_state.ask_prices[0]) / 2
+            if terminal_state.bid_prices and terminal_state.ask_prices
+            else arrival_mid
+        )
         vwap = sum(q * p for _, q, p in fills) / filled_qty if filled_qty else None
         sign = 1 if ep.parent_order.side == "BUY" else -1
-        execution_value = filled_qty * sign * (terminal_mid - vwap) if vwap is not None else 0.0
+        execution_value = (
+            filled_qty * sign * (terminal_mid - vwap) if vwap is not None else 0.0
+        )
         fees = filled_qty * self.config.fee_per_share
         penalty = remaining * self.config.unfilled_penalty_per_share
         reward = execution_value - fees - penalty
         spread_capture = sign * (arrival_mid - vwap) if vwap is not None else 0.0
         markout = sign * (terminal_mid - vwap) if vwap is not None else 0.0
         first = fills[0][0] - ep.parent_order.decision_time if fills else None
-        full = fills[-1][0] - ep.parent_order.decision_time if remaining == 0 and fills else None
+        full = (
+            fills[-1][0] - ep.parent_order.decision_time
+            if remaining == 0 and fills
+            else None
+        )
         # Halts deterministically stop replay; fills before the halt remain valid.
         _ = halted
-        return OrderOutcome(ep.parent_order.quantity, filled_qty, filled_qty / ep.parent_order.quantity, first, full, vwap, arrival_mid, terminal_mid, spread_capture, markout, fees, penalty, reward, execution_value)
+        return OrderOutcome(
+            ep.parent_order.quantity,
+            filled_qty,
+            filled_qty / ep.parent_order.quantity,
+            first,
+            full,
+            vwap,
+            arrival_mid,
+            terminal_mid,
+            spread_capture,
+            markout,
+            fees,
+            penalty,
+            reward,
+            execution_value,
+        )
 
     @staticmethod
     def _consume_ahead(
@@ -211,32 +277,43 @@ class OrderBookEnvironment:
         remaining = quantity
         # Anonymous file-boundary inventory predates every observed submission.
         consumed = min(remaining, anonymous_ahead)
-        anonymous_ahead -= consumed; remaining -= consumed
+        anonymous_ahead -= consumed
+        remaining -= consumed
         for order_id in ahead_order:
             if not remaining:
                 break
             available = ahead_by_id.get(order_id, 0)
             consumed = min(remaining, available)
-            ahead_by_id[order_id] = available - consumed; remaining -= consumed
+            ahead_by_id[order_id] = available - consumed
+            remaining -= consumed
         return quantity - remaining, anonymous_ahead
 
     def _step_l3_fifo(self, action: PlacementAction) -> OrderOutcome:
         assert self._episode is not None and self._data is not None
-        ep, data = self._episode, self._data; i = ep.decision_event_index
+        ep, data = self._episode, self._data
+        i = ep.decision_event_index
         state = data.states[i]
-        price = action_to_price(state, ep.parent_order.side, action, self.config.tick_size)
+        price = action_to_price(
+            state, ep.parent_order.side, action, self.config.tick_size
+        )
         direction = 1 if ep.parent_order.side == "BUY" else -1
-        levels = dict(zip(
-            state.bid_prices if ep.parent_order.side == "BUY" else state.ask_prices,
-            state.bid_sizes if ep.parent_order.side == "BUY" else state.ask_sizes,
-        ))
+        levels = dict(
+            zip(
+                state.bid_prices if ep.parent_order.side == "BUY" else state.ask_prices,
+                state.bid_sizes if ep.parent_order.side == "BUY" else state.ask_sizes,
+            )
+        )
         snapshot_depth = max(0, levels.get(price, 0))
         if ep.dataset_id not in self._l3_indices:
             self._l3_indices[ep.dataset_id] = _L3ReplayIndex(data)
         index = self._l3_indices[ep.dataset_id]
         active = index.orders_after(i)
         at_price = sorted(
-            (order for order in active.values() if order.price == price and order.direction == direction),
+            (
+                order
+                for order in active.values()
+                if order.price == price and order.direction == direction
+            ),
             key=lambda order: (order.arrival_order, order.order_id),
         )
         reconstructed_depth = sum(order.remaining for order in at_price)
@@ -282,34 +359,72 @@ class OrderBookEnvironment:
             if compatible and event.event_type == 4:
                 visible_quantity += event.size
                 consumed, anonymous_ahead = self._consume_ahead(
-                    min(queue_ahead, event.size), ahead_by_id, ahead_order, anonymous_ahead
+                    min(queue_ahead, event.size),
+                    ahead_by_id,
+                    ahead_order,
+                    anonymous_ahead,
                 )
                 queue_ahead = max(0, queue_ahead - consumed)
                 executable = event.size - consumed
                 filled = min(remaining, executable)
                 if filled:
-                    fills.append((event.timestamp, filled, price)); remaining -= filled
+                    fills.append((event.timestamp, filled, price))
+                    remaining -= filled
             _L3ReplayIndex.apply_event(active, event, j)
             minimum_queue_ahead = min(minimum_queue_ahead, queue_ahead)
         filled_qty = ep.parent_order.quantity - remaining
         arrival_mid = (state.bid_prices[0] + state.ask_prices[0]) / 2
-        terminal_mid = (terminal_state.bid_prices[0] + terminal_state.ask_prices[0]) / 2 if terminal_state.bid_prices and terminal_state.ask_prices else arrival_mid
+        terminal_mid = (
+            (terminal_state.bid_prices[0] + terminal_state.ask_prices[0]) / 2
+            if terminal_state.bid_prices and terminal_state.ask_prices
+            else arrival_mid
+        )
         vwap = sum(q * p for _, q, p in fills) / filled_qty if filled_qty else None
         sign = 1 if ep.parent_order.side == "BUY" else -1
-        execution_value = filled_qty * sign * (terminal_mid - vwap) if vwap is not None else 0.0
+        execution_value = (
+            filled_qty * sign * (terminal_mid - vwap) if vwap is not None else 0.0
+        )
         fees = filled_qty * self.config.fee_per_share
         penalty = remaining * self.config.unfilled_penalty_per_share
         reward = execution_value - fees - penalty
         spread_capture = sign * (arrival_mid - vwap) if vwap is not None else 0.0
         markout = sign * (terminal_mid - vwap) if vwap is not None else 0.0
         first = fills[0][0] - ep.parent_order.decision_time if fills else None
-        full = fills[-1][0] - ep.parent_order.decision_time if remaining == 0 and fills else None
-        self.last_queue_diagnostics = QueueReplayDiagnostics(
-            "l3_fifo", price, snapshot_depth, reconstructed_depth, snapshot_depth - min(snapshot_depth, reconstructed_depth),
-            reconstruction_excess, snapshot_depth, queue_ahead, minimum_queue_ahead, ahead_cancelled,
-            behind_removed, visible_quantity,
+        full = (
+            fills[-1][0] - ep.parent_order.decision_time
+            if remaining == 0 and fills
+            else None
         )
-        return OrderOutcome(ep.parent_order.quantity, filled_qty, filled_qty / ep.parent_order.quantity, first, full, vwap, arrival_mid, terminal_mid, spread_capture, markout, fees, penalty, reward, execution_value)
+        self.last_queue_diagnostics = QueueReplayDiagnostics(
+            "l3_fifo",
+            price,
+            snapshot_depth,
+            reconstructed_depth,
+            snapshot_depth - min(snapshot_depth, reconstructed_depth),
+            reconstruction_excess,
+            snapshot_depth,
+            queue_ahead,
+            minimum_queue_ahead,
+            ahead_cancelled,
+            behind_removed,
+            visible_quantity,
+        )
+        return OrderOutcome(
+            ep.parent_order.quantity,
+            filled_qty,
+            filled_qty / ep.parent_order.quantity,
+            first,
+            full,
+            vwap,
+            arrival_mid,
+            terminal_mid,
+            spread_capture,
+            markout,
+            fees,
+            penalty,
+            reward,
+            execution_value,
+        )
 
 
 def evaluate_action_counterfactuals(
@@ -321,7 +436,10 @@ def evaluate_action_counterfactuals(
     """Replay every legal action once and derive opportunity plus reward diagnostics."""
     summaries: list[ActionOutcomeSummary] = []
     for action in env.valid_actions():
-        if observed_outcome is not None and action.offset_ticks == chosen_action.offset_ticks:
+        if (
+            observed_outcome is not None
+            and action.offset_ticks == chosen_action.offset_ticks
+        ):
             outcome = observed_outcome
         else:
             env.reset(episode)
@@ -338,10 +456,16 @@ def evaluate_action_counterfactuals(
         )
     action_outcomes = tuple(summaries)
     rewards = [item.reward for item in action_outcomes]
-    fillable = tuple(item.offset_ticks for item in action_outcomes if item.fill_ratio > 0)
+    fillable = tuple(
+        item.offset_ticks for item in action_outcomes if item.fill_ratio > 0
+    )
     best_reward = max(rewards)
     best_fill_ratio = max(item.fill_ratio for item in action_outcomes)
-    chosen = next(item for item in action_outcomes if item.offset_ticks == chosen_action.offset_ticks)
+    chosen = next(
+        item
+        for item in action_outcomes
+        if item.offset_ticks == chosen_action.offset_ticks
+    )
     selected_fillable = chosen.fill_ratio > 0
     available = bool(fillable)
     return ActionCounterfactualReport(
